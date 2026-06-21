@@ -4,6 +4,7 @@ import { DSA_COURSE } from "./dsa-course";
 import { HTML_CSS_COURSE } from "./html-css-course";
 import { JAVASCRIPT_COURSE } from "./javascript-course";
 import { NODEJS_COURSE } from "./nodejs-course";
+import { PYTHON_ADVANCED_COURSE } from "./python-advanced-course";
 import { PYTHON_COURSE } from "./python-course";
 import { REACT_COURSE } from "./react-course";
 import { SQL_COURSE } from "./sql-course";
@@ -20,6 +21,7 @@ export const COURSES: Course[] = [
   ADVANCED_CSS_COURSE,
   JAVASCRIPT_COURSE,
   PYTHON_COURSE,
+  PYTHON_ADVANCED_COURSE,
   REACT_COURSE,
   SQL_COURSE,
   DSA_COURSE,

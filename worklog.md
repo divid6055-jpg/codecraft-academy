@@ -117,3 +117,19 @@ Work Log:
 Stage Summary:
 - 10 Advanced CSS lessons: Grid, Flexbox, Container Queries, positioning, quiz, animations, transforms, variables, performance, exercise
 - Course registered in catalog
+
+---
+Task ID: 16-PY2
+Agent: general-purpose
+Task: Build Advanced Python course
+
+Work Log:
+- Read python-course.ts for pattern
+- Created python-advanced-course.ts with 3 modules, 15 lessons
+- All content uses string concatenation
+- Updated courses/index.ts
+- Lint passes cleanly
+
+Stage Summary:
+- 15 Advanced Python lessons covering OOP, exceptions, files, decorators, generators, async
+- Course registered in catalog
