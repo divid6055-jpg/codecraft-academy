@@ -1,4 +1,5 @@
 import type { Course } from "@/types";
+import { ADVANCED_CSS_COURSE } from "./advanced-css-course";
 import { DSA_COURSE } from "./dsa-course";
 import { HTML_CSS_COURSE } from "./html-css-course";
 import { JAVASCRIPT_COURSE } from "./javascript-course";
@@ -6,6 +7,7 @@ import { NODEJS_COURSE } from "./nodejs-course";
 import { PYTHON_COURSE } from "./python-course";
 import { REACT_COURSE } from "./react-course";
 import { SQL_COURSE } from "./sql-course";
+import { TYPESCRIPT_COURSE } from "./typescript-course";
 
 // ====================================================================
 // CodeCraft Academy — Courses Catalog
@@ -15,12 +17,14 @@ import { SQL_COURSE } from "./sql-course";
 
 export const COURSES: Course[] = [
   HTML_CSS_COURSE,
+  ADVANCED_CSS_COURSE,
   JAVASCRIPT_COURSE,
   PYTHON_COURSE,
   REACT_COURSE,
   SQL_COURSE,
   DSA_COURSE,
   NODEJS_COURSE,
+  TYPESCRIPT_COURSE,
   // Future courses will be added here:
   // ...
 ];

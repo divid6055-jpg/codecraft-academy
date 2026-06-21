@@ -85,3 +85,35 @@ Work Log:
 Stage Summary:
 - 10 Node.js/Express lessons: intro, modules, fs, http, quiz, Express intro, routing, middleware, REST API, exercise
 - Course registered in catalog
+
+---
+Task ID: 16-TS
+Agent: general-purpose
+Task: Build TypeScript Mastery course
+
+Work Log:
+- Read javascript-course.ts for pattern
+- Created typescript-course.ts with 2 modules, 10 lessons
+- All content uses string concatenation
+- Updated courses/index.ts
+- Lint passes cleanly
+
+Stage Summary:
+- 10 TypeScript lessons: intro, basic types, interfaces, classes, quiz, generics, utility types, modules, strict mode, exercise
+- Course registered in catalog
+
+---
+Task ID: 16-CSS
+Agent: general-purpose
+Task: Build Advanced CSS course
+
+Work Log:
+- Read html-css-course.ts and javascript-course.ts for patterns
+- Created advanced-css-course.ts with 2 modules, 10 lessons
+- All content uses string concatenation
+- Updated courses/index.ts
+- Lint passes cleanly
+
+Stage Summary:
+- 10 Advanced CSS lessons: Grid, Flexbox, Container Queries, positioning, quiz, animations, transforms, variables, performance, exercise
+- Course registered in catalog
