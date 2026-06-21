@@ -162,7 +162,7 @@ const buildPreview = (files: CodeFile[]): string => {
     console[level] = function(...args){ send(level, args); orig.apply(console, args); };
   });
   window.onerror = function(msg, src, line, col, err){
-    send('error', [\`\\\`\${err && err.stack ? err.stack : msg} (line \${line})\\\``]);
+    send('error', [(err && err.stack ? err.stack : msg) + ' (line ' + line + ')']);
     return false;
   };
 })();
