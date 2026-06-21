@@ -133,3 +133,35 @@ Work Log:
 Stage Summary:
 - 15 Advanced Python lessons covering OOP, exceptions, files, decorators, generators, async
 - Course registered in catalog
+
+---
+Task ID: 16-DEV
+Agent: general-purpose
+Task: Build DevOps & Docker course
+
+Work Log:
+- Read javascript-course.ts for pattern
+- Created devops-course.ts with 2 modules, 10 lessons
+- All content uses string concatenation
+- Updated courses/index.ts
+- Lint passes cleanly
+
+Stage Summary:
+- 10 DevOps lessons covering Docker, Dockerfile, Compose, CI/CD, GitHub Actions, deployment, monitoring
+- Course registered in catalog
+
+---
+Task ID: 16-AI
+Agent: general-purpose
+Task: Build AI & Machine Learning course
+
+Work Log:
+- Read python-course.ts for pattern
+- Created ai-course.ts with 3 modules, 15 lessons
+- All content uses string concatenation
+- Updated courses/index.ts
+- Lint passes cleanly
+
+Stage Summary:
+- 15 AI lessons covering ML basics, NumPy, Pandas, visualization, neural networks, TensorFlow, CNN, NLP
+- Course registered in catalog

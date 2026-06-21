@@ -1,5 +1,7 @@
 import type { Course } from "@/types";
 import { ADVANCED_CSS_COURSE } from "./advanced-css-course";
+import { AI_COURSE } from "./ai-course";
+import { DEVOPS_COURSE } from "./devops-course";
 import { DSA_COURSE } from "./dsa-course";
 import { HTML_CSS_COURSE } from "./html-css-course";
 import { JAVASCRIPT_COURSE } from "./javascript-course";
@@ -27,6 +29,8 @@ export const COURSES: Course[] = [
   DSA_COURSE,
   NODEJS_COURSE,
   TYPESCRIPT_COURSE,
+  DEVOPS_COURSE,
+  AI_COURSE,
   // Future courses will be added here:
   // ...
 ];
