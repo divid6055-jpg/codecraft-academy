@@ -1,5 +1,7 @@
 import type { Course } from "@/types";
 import { HTML_CSS_COURSE } from "./html-css-course";
+import { JAVASCRIPT_COURSE } from "./javascript-course";
+import { PYTHON_COURSE } from "./python-course";
 
 // ====================================================================
 // CodeCraft Academy — Courses Catalog
@@ -9,10 +11,10 @@ import { HTML_CSS_COURSE } from "./html-css-course";
 
 export const COURSES: Course[] = [
   HTML_CSS_COURSE,
+  JAVASCRIPT_COURSE,
+  PYTHON_COURSE,
   // Future courses will be added here:
-  // JavaScriptBasicsCourse,
   // ReactFundamentalsCourse,
-  // PythonFundamentalsCourse,
   // DataStructuresCourse,
   // ...
 ];
