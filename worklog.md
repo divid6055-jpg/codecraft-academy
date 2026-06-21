@@ -35,3 +35,53 @@ Stage Summary:
 - 10 React lessons (intro, JSX, components, props, quiz, useState, useEffect, events, lists, counter exercise)
 - Each lesson has body, code samples, callouts, key takeaways
 - Course registered in catalog
+
+---
+Task ID: 16-SQL
+Agent: general-purpose
+Task: Build SQL & Databases course
+
+Work Log:
+- Read javascript-course.ts for pattern
+- Created sql-course.ts with 2 modules, 10 lessons
+- All content uses string concatenation (no template literals)
+- Updated courses/index.ts
+- Lint passes cleanly
+
+Stage Summary:
+- 10 SQL lessons: intro, SELECT, WHERE, JOIN, quiz, INSERT/UPDATE, aggregates, schema, indexes, exercise
+- Course registered in catalog
+
+---
+Task ID: 16-DSA
+Agent: general-purpose
+Task: Build Data Structures & Algorithms course
+
+Work Log:
+- Read javascript-course.ts for pattern
+- Created dsa-course.ts with 2 modules, 10 lessons
+- All content uses string concatenation (no template literals)
+- Updated courses/index.ts
+- Lint passes cleanly
+
+Stage Summary:
+- 10 DSA lessons covering Big-O, arrays, stacks, queues, hash tables, trees, graphs, sorting
+- Python code samples throughout
+- Course registered in catalog
+- Course registered in catalog
+
+---
+Task ID: 16-NODE
+Agent: general-purpose
+Task: Build Node.js & Express course
+
+Work Log:
+- Read javascript-course.ts for pattern
+- Created nodejs-course.ts with 2 modules, 10 lessons
+- All content uses string concatenation
+- Updated courses/index.ts
+- Lint passes cleanly
+
+Stage Summary:
+- 10 Node.js/Express lessons: intro, modules, fs, http, quiz, Express intro, routing, middleware, REST API, exercise
+- Course registered in catalog
