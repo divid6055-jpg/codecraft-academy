@@ -165,3 +165,19 @@ Work Log:
 Stage Summary:
 - 15 AI lessons covering ML basics, NumPy, Pandas, visualization, neural networks, TensorFlow, CNN, NLP
 - Course registered in catalog
+
+---
+Task ID: 16-MOB
+Agent: general-purpose
+Task: Build Mobile Development with React Native course
+
+Work Log:
+- Read javascript-course.ts for pattern
+- Created mobile-course.ts with 2 modules, 10 lessons
+- All content uses string concatenation
+- Updated courses/index.ts
+- Lint passes cleanly
+
+Stage Summary:
+- 10 Mobile lessons covering React Native, Expo, components, styling, navigation, state, native APIs, deployment
+- Course registered in catalog

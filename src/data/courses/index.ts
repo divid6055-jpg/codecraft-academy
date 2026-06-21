@@ -5,6 +5,7 @@ import { DEVOPS_COURSE } from "./devops-course";
 import { DSA_COURSE } from "./dsa-course";
 import { HTML_CSS_COURSE } from "./html-css-course";
 import { JAVASCRIPT_COURSE } from "./javascript-course";
+import { MOBILE_COURSE } from "./mobile-course";
 import { NODEJS_COURSE } from "./nodejs-course";
 import { PYTHON_ADVANCED_COURSE } from "./python-advanced-course";
 import { PYTHON_COURSE } from "./python-course";
@@ -31,6 +32,7 @@ export const COURSES: Course[] = [
   TYPESCRIPT_COURSE,
   DEVOPS_COURSE,
   AI_COURSE,
+  MOBILE_COURSE,
   // Future courses will be added here:
   // ...
 ];
