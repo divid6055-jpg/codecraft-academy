@@ -387,3 +387,27 @@ export function getLastNDaysStreak(days: number) {
 }
 
 export { xpForLevel, levelForXp };
+
+// Helper: XP progress within current level
+export function xpToNextLevel(xp: number, level: number): {
+  current: number;
+  needed: number;
+  remaining: number;
+} {
+  let remaining = xp;
+  for (let l = 1; l < level; l++) {
+    remaining -= xpForLevel(l);
+  }
+  const needed = xpForLevel(level);
+  return {
+    current: Math.max(0, remaining),
+    needed,
+    remaining: Math.max(0, needed - remaining),
+  };
+}
+
+// Helper: percentage progress within current level
+export function xpProgressInLevel(xp: number, level: number): number {
+  const { current, needed } = xpToNextLevel(xp, level);
+  return needed === 0 ? 0 : Math.min(100, (current / needed) * 100);
+}
