@@ -1,8 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// ====================================================================
+// CodeCraft Academy — Prisma Schema
+// ====================================================================
+// Database schema for users, courses progress, forum, and certificates.
+// Uses SQLite for development simplicity.
+// ====================================================================
 
 generator client {
   provider = "prisma-client-js"
@@ -13,20 +14,247 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// --------------------------------------------------------------------
+// User & Authentication
+// --------------------------------------------------------------------
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  image         String?
+  bio           String?
+  title         String?
+  location      String?
+  website       String?
+  github        String?
+  twitter       String?
+  linkedin      String?
+  role          String    @default("student") // student, mentor, instructor, moderator, admin
+  xp            Int       @default(0)
+  level         Int       @default(1)
+  streak        Int       @default(0)
+  lastActivity  DateTime?
+  dailyGoalMins Int       @default(30)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  accounts        Account[]
+  sessions        Session[]
+  enrollments     Enrollment[]
+  lessonCompletions LessonCompletion[]
+  exerciseRecords ExerciseRecord[]
+  quizResults     QuizResult[]
+  achievements    UserAchievement[]
+  bookmarks       LessonBookmark[]
+  forumThreads    ForumThread[]
+  forumPosts      ForumPost[]
+  certificates    Certificate[]
+  notifications   Notification[]
 }
 
-model Post {
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// --------------------------------------------------------------------
+// Course Progress
+// --------------------------------------------------------------------
+model Enrollment {
+  id              String   @id @default(cuid())
+  userId          String
+  courseId        String
+  enrolledAt      DateTime @default(now())
+  lastLessonId    String?
+  lastVisitedAt   DateTime @default(now())
+  completedAt     DateTime?
+
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessons LessonCompletion[]
+
+  @@unique([userId, courseId])
+}
+
+model LessonCompletion {
+  id          String   @id @default(cuid())
+  userId      String
+  enrollmentId String
+  lessonId    String
+  courseId    String
+  completedAt DateTime @default(now())
+  xpEarned    Int      @default(0)
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  enrollment Enrollment? @relation(fields: [enrollmentId], references: [id])
+
+  @@unique([userId, lessonId])
+}
+
+model LessonBookmark {
   id        String   @id @default(cuid())
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  authorId  String
+  userId    String
+  lessonId  String
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+}
+
+model ExerciseRecord {
+  id            String   @id @default(cuid())
+  userId        String
+  exerciseId    String
+  lessonId      String
+  courseId      String
+  attempts      Int      @default(0)
+  solved        Boolean  @default(false)
+  solvedAt      DateTime?
+  lastCode      String?
+  testsPassed   Int      @default(0)
+  totalTests    Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, exerciseId])
+}
+
+model QuizResult {
+  id              String   @id @default(cuid())
+  userId          String
+  quizId          String
+  lessonId        String
+  courseId        String
+  score           Int
+  totalQuestions  Int
+  correctAnswers  Int
+  timeSpentSecs   Int
+  passed          Boolean
+  takenAt         DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, quizId, lessonId])
+}
+
+model UserAchievement {
+  id           String   @id @default(cuid())
+  userId       String
+  achievementId String
+  unlockedAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, achievementId])
+}
+
+// --------------------------------------------------------------------
+// Forum
+// --------------------------------------------------------------------
+model ForumThread {
+  id         String   @id @default(cuid())
+  title      String
+  body       String
+  authorId   String
+  categoryId String
+  pinned     Boolean  @default(false)
+  solved     Boolean  @default(false)
+  views      Int      @default(0)
+  likes      Int      @default(0)
+  tags       String   @default("[]") // JSON array
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  author User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  posts  ForumPost[]
+
+  @@index([categoryId])
+  @@index([authorId])
+}
+
+model ForumPost {
+  id         String   @id @default(cuid())
+  threadId   String
+  authorId   String
+  body       String
+  likes      Int      @default(0)
+  isAnswer   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  thread ForumThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  author User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@index([threadId])
+}
+
+// --------------------------------------------------------------------
+// Certificates
+// --------------------------------------------------------------------
+model Certificate {
+  id           String   @id @default(cuid())
+  userId       String
+  courseId     String
+  courseName   String
+  issuedAt     DateTime @default(now())
+  finalScore   Float
+  certificateNumber String @unique
+  metadata     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+}
+
+// --------------------------------------------------------------------
+// Notifications
+// --------------------------------------------------------------------
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String // info, success, warning, achievement, social
+  title     String
+  body      String
+  icon      String?
+  read      Boolean  @default(false)
+  actionUrl String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, read])
 }

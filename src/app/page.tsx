@@ -17,6 +17,7 @@ import { PlaygroundView } from "@/components/editor/playground-view";
 import { DashboardView } from "@/components/dashboard/dashboard-view";
 import { AchievementsView } from "@/components/achievements/achievements-view";
 import { ForumView } from "@/components/forum/forum-view";
+import { CommunityView } from "@/components/community/community-view";
 import { InstructorsView } from "@/components/profile/instructors-view";
 import { AboutView } from "@/components/profile/about-view";
 import { PricingView } from "@/components/profile/pricing-view";
@@ -83,7 +84,9 @@ export default function Home() {
       case "forum":
         return <ForumView />;
       case "forum-thread":
-        return <ForumView />; // Simplified: reuse forum view
+        return <CommunityView />; // Show community view with chat + forum
+      case "community":
+        return <CommunityView />;
       case "instructors":
         return <InstructorsView />;
       case "about":

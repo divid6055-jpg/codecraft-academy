@@ -29,6 +29,7 @@ export const NAV_ITEMS: NavItem[] = [
   { view: "dashboard", label: "لوحتي", icon: LayoutDashboard },
   { view: "achievements", label: "الإنجازات", icon: Trophy },
   { view: "forum", label: "المجتمع", icon: MessageSquare },
+  { view: "community", label: "الدردشة", icon: MessageSquare },
   { view: "instructors", label: "المدربون", icon: Users },
   { view: "about", label: "عن المنصة", icon: Info },
 ];
