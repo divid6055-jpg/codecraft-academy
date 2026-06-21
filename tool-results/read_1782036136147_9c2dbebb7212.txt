@@ -1,0 +1,2002 @@
+     1→import type { Course, Module, Lesson, LessonContent, CodeSample, Callout } from "@/types";
+     2→
+     3→// ====================================================================
+     4→// HTML & CSS Foundations Course — Frontend Track
+     5→// ====================================================================
+     6→
+     7→const htmlIntroCallout: Callout = {
+     8→  type: "tip",
+     9→  title: { ar: "نصيحة", en: "Tip" },
+    10→  body: {
+    11→    ar: "لا تقلق إذا بدا الكود غريباً في البداية. مع التكرار والممارسة ستصبح كتابة HTML طبيعية مثل الكتابة بلغتك الأم. ابدأ بكتابة الكود يدوياً بدلاً من نسخه.",
+    12→    en: "Don't worry if the code looks strange at first. With practice, writing HTML will become as natural as writing in your native language. Type the code manually instead of copying it.",
+    13→  },
+    14→};
+    15→
+    16→const htmlSample1: CodeSample = {
+    17→  id: "html-basics-1",
+    18→  language: "html",
+    19→  filename: "index.html",
+    20→  code: `<!DOCTYPE html>
+    21→<html lang="ar" dir="rtl">
+    22→<head>
+    23→  <meta charset="UTF-8">
+    24→  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    25→  <title>صفحتي الأولى</title>
+    26→</head>
+    27→<body>
+    28→  <h1>مرحبا بالعالم!</h1>
+    29→  <p>هذه أول فقرة في صفحتي.</p>
+    30→</body>
+    31→</html>`,
+    32→  explanation: {
+    33→    ar: "هذا أبسط هيكل لصفحة HTML. الـ DOCTYPE يخبر المتصفح أن الصفحة تستخدم HTML5. وسم <html> هو الجذر، و <head> يحتوي على معلومات الصفحة، بينما <body> يحتوي على المحتوى المرئي.",
+    34→    en: "This is the simplest HTML page structure. The DOCTYPE tells the browser the page uses HTML5. The <html> tag is the root, <head> contains page metadata, and <body> holds visible content.",
+    35→  },
+    36→  runnable: true,
+    37→};
+    38→
+    39→const cssSample1: CodeSample = {
+    40→  id: "css-basics-1",
+    41→  language: "css",
+    42→  filename: "styles.css",
+    43→  code: `/* المحددات الأساسية */
+    44→body {
+    45→  font-family: 'Cairo', sans-serif;
+    46→  background-color: #f8fafc;
+    47→  color: #1e293b;
+    48→  margin: 0;
+    49→  padding: 2rem;
+    50→  line-height: 1.6;
+    51→}
+    52→
+    53→h1 {
+    54→  color: #0ea5e9;
+    55→  font-size: 2.5rem;
+    56→  border-bottom: 3px solid #0ea5e9;
+    57→  padding-bottom: 0.5rem;
+    58→}
+    59→
+    60→p {
+    61→  font-size: 1.1rem;
+    62→  color: #475569;
+    63→}`,
+    64→  explanation: {
+    65→    ar: "نستخدم محددات CSS لاستهداف عناصر HTML وتنسيقها. هنا نستخدم محدد العنصر (body, h1, p) الذي يستهدف جميع العناصر من ذلك النوع.",
+    66→    en: "We use CSS selectors to target and style HTML elements. Here we use element selectors (body, h1, p) that target all elements of that type.",
+    67→  },
+    68→  runnable: true,
+    69→};
+    70→
+    71→const flexboxSample: CodeSample = {
+    72→  id: "css-flexbox-1",
+    73→  language: "css",
+    74→  filename: "flexbox.css",
+    75→  code: `.container {
+    76→  display: flex;
+    77→  justify-content: space-between;
+    78→  align-items: center;
+    79→  gap: 1rem;
+    80→  flex-wrap: wrap;
+    81→  padding: 1.5rem;
+    82→  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    83→  border-radius: 1rem;
+    84→}
+    85→
+    86→.item {
+    87→  background: white;
+    88→  padding: 1rem 1.5rem;
+    89→  border-radius: 0.5rem;
+    90→  font-weight: 600;
+    91→  flex: 1 1 150px;
+    92→  text-align: center;
+    93→}`,
+    94→  explanation: {
+    95→    ar: "Flexbox هو أداة قوية لترتيب العناصر في صف أو عمود. justify-content يتحكم في التوزيع الأفقي، align-items في المحاذاة الرأسية، و flex-wrap يسمح للعناصر بالانتقال لسطر جديد.",
+    96→    en: "Flexbox is a powerful tool for arranging elements in a row or column. justify-content controls horizontal distribution, align-items controls vertical alignment, and flex-wrap allows items to wrap to new lines.",
+    97→  },
+    98→  runnable: true,
+    99→};
+   100→
+   101→const gridSample: CodeSample = {
+   102→  id: "css-grid-1",
+   103→  language: "css",
+   104→  filename: "grid.css",
+   105→  code: `.grid-layout {
+   106→  display: grid;
+   107→  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   108→  gap: 1.5rem;
+   109→  padding: 2rem;
+   110→}
+   111→
+   112→.card {
+   113→  background: white;
+   114→  border-radius: 0.75rem;
+   115→  padding: 1.5rem;
+   116→  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+   117→  transition: transform 0.2s, box-shadow 0.2s;
+   118→}
+   119→
+   120→.card:hover {
+   121→  transform: translateY(-4px);
+   122→  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+   123→}`,
+   124→  explanation: {
+   125→    ar: "CSS Grid مثالي لتخطيطات ثنائية الأبعاد. الدالة repeat(auto-fit, minmax(...)) تنشئ شبكة متجاوبة تتكيف مع حجم الشاشة تلقائياً.",
+   126→    en: "CSS Grid is ideal for two-dimensional layouts. The repeat(auto-fit, minmax(...)) function creates a responsive grid that automatically adapts to screen size.",
+   127→  },
+   128→  runnable: true,
+   129→};
+   130→
+   131→const responsiveSample: CodeSample = {
+   132→  id: "css-responsive-1",
+   133→  language: "css",
+   134→  filename: "responsive.css",
+   135→  code: `/* Mobile First Approach */
+   136→.nav {
+   137→  display: flex;
+   138→  flex-direction: column;
+   139→  gap: 0.5rem;
+   140→}
+   141→
+   142→/* Tablet */
+   143→@media (min-width: 768px) {
+   144→  .nav {
+   145→    flex-direction: row;
+   146→    justify-content: space-between;
+   147→  }
+   148→}
+   149→
+   150→/* Desktop */
+   151→@media (min-width: 1024px) {
+   152→  .nav {
+   153→    padding: 0 2rem;
+   154→  }
+   155→  
+   156→  .nav-item {
+   157→    font-size: 1rem;
+   158→  }
+   159→}`,
+   160→  explanation: {
+   161→    ar: "أسلوب Mobile First يعني أننا نبدأ بتصميم الموبايل ثم نضيف أنماطاً للشاشات الأكبر عبر media queries. هذا الأسلوب أفضل للأداء لأن الأجهزة الصغيرة لا تحمل CSS غير ضروري.",
+   162→    en: "Mobile First approach means we start designing for mobile then add styles for larger screens via media queries. This is better for performance because small devices don't load unnecessary CSS.",
+   163→  },
+   164→  runnable: true,
+   165→};
+   166→
+   167→// --------------------------------------------------------------------
+   168→// Module 1: HTML Basics
+   169→// --------------------------------------------------------------------
+   170→const module1Lessons: Lesson[] = [
+   171→  {
+   172→    id: "lesson-html-intro",
+   173→    moduleId: "module-html-basics",
+   174→    courseId: "course-html-css",
+   175→    slug: "html-introduction",
+   176→    title: { ar: "مقدمة في HTML", en: "Introduction to HTML" },
+   177→    summary: {
+   178→      ar: "تعرف على لغة HTML ودورها في بناء صفحات الويب وهيكل الصفحة الأساسي.",
+   179→      en: "Learn about HTML and its role in building web pages and the basic page structure.",
+   180→    },
+   181→    type: "reading",
+   182→    order: 1,
+   183→    estimatedMinutes: 15,
+   184→    isFree: true,
+   185→    isLocked: false,
+   186→    content: {
+   187→      body: {
+   188→        ar: `## ما هي HTML؟
+   189→
+   190→**HTML** (HyperText Markup Language) هي اللغة الأساسية لبناء صفحات الويب. ليست لغة برمجة بالمعنى الحرفي، بل هي **لغة ترميز** تصف هيكل المحتوى باستخدام وسوم (tags).
+   191→
+   192→تخيل HTML كالهيكل العظمي لصفحتك: تحدد أين يذهب العنوان، أين الفقرات، أين الصور، وأين الروابط. كل ما تراه في أي موقع ويب يبدأ بـ HTML.
+   193→
+   194→### تاريخ موجز
+   195→
+   196→- **1991**: تيم بيرنرز-لي نشر أول وصف لـ HTML
+   197→- **1995**: HTML 2.0 (أول معيار رسمي)
+   198→- **1999**: HTML 4.01
+   199→- **2014**: HTML5 (الإصدار الحديث المعتمد عالمياً)
+   200→
+   201→### كيف تعمل HTML؟
+   202→
+   203→عندما تزور موقعاً، متصفحك (Chrome, Firefox, Safari) يقوم بـ:
+   204→1. تحميل ملف HTML من الخادم
+   205→2. قراءة الوسوم وفهم هيكل الصفحة
+   206→3. تطبيق CSS من ملفات منفصلة
+   207→4. تنفيذ JavaScript إن وُجدت
+   208→5. عرض الصفحة النهائية على الشاشة
+   209→
+   210→### بنية الوسم (Tag)
+   211→
+   212→كل وسم في HTML يكتب بين أقواس زاوية \`< >\`:
+   213→
+   214→\`\`\`
+   215→<opening-tag>المحتوى</closing-tag>
+   216→\`\`\`
+   217→
+   218→بعض الوسوم تسمى "self-closing" ولا تحتاج وسم إغلاق:
+   219→\`\`\`
+   220→<img src="image.jpg" />
+   221→<br />
+   222→<input type="text" />
+   223→\`\`\`
+   224→
+   225→### الصفات (Attributes)
+   226→
+   227→الوسوم يمكن أن تحتوي على صفات تعطي معلومات إضافية:
+   228→
+   229→\`\`\`html
+   230→<a href="https://example.com" target="_blank">رابط</a>
+   231→<img src="photo.jpg" alt="وصف الصورة" width="300">
+   232→\`\`\`
+   233→
+   234→- \`href\`: عنوان الرابط
+   235→- \`src\`: مصدر الصورة
+   236→- \`alt\`: نص بديل (مهم للوصول)
+   237→- \`target="_blank"\`: فتح في تبويب جديد
+   238→
+   239→### تجربة عملية
+   240→
+   241→في المحرر التفاعلي بالأسفل، جرّب تعديل النص داخل \`<h1>\` و \`<p>\` وشاهد التغييرات فوراً.`,
+   242→        en: `## What is HTML?
+   243→
+   244→**HTML** (HyperText Markup Language) is the foundational language for building web pages. It's not a programming language per se, but a **markup language** that describes content structure using tags.
+   245→
+   246→Think of HTML as the skeleton of your page: it defines where the title goes, where paragraphs are, where images live, and where links point. Everything you see on any website starts with HTML.`,
+   247→      },
+   248→      codeSamples: [htmlSample1],
+   249→      callouts: [htmlIntroCallout],
+   250→      keyTakeaways: [
+   251→        {
+   252→          ar: "HTML لغة ترميز تصف هيكل صفحات الويب، وليست لغة برمجة.",
+   253→          en: "HTML is a markup language that describes web page structure, not a programming language.",
+   254→        },
+   255→        {
+   256→          ar: "الوسوم تكتب بين < > والوسوم المغلقة تحتوي على / قبل الاسم.",
+   257→          en: "Tags are written between < > and closing tags include / before the name.",
+   258→        },
+   259→        {
+   260→          ar: "الصفات (attributes) تعطي معلومات إضافية للوسوم مثل href و src و alt.",
+   261→          en: "Attributes provide additional information to tags like href, src, and alt.",
+   262→        },
+   263→        {
+   264→          ar: "المتصفح يقرأ HTML ويبني شجرة DOM ثم يعرض الصفحة.",
+   265→          en: "The browser reads HTML, builds the DOM tree, then renders the page.",
+   266→        },
+   267→      ],
+   268→      references: [
+   269→        {
+   270→          title: { ar: "MDN Web Docs — HTML", en: "MDN Web Docs — HTML" },
+   271→          url: "https://developer.mozilla.org/ar/docs/Web/HTML",
+   272→          type: "doc",
+   273→        },
+   274→        {
+   275→          title: { ar: "W3Schools HTML Tutorial", en: "W3Schools HTML Tutorial" },
+   276→          url: "https://www.w3schools.com/html/",
+   277→          type: "doc",
+   278→        },
+   279→      ],
+   280→    },
+   281→  },
+   282→  {
+   283→    id: "lesson-html-structure",
+   284→    moduleId: "module-html-basics",
+   285→    courseId: "course-html-css",
+   286→    slug: "html-page-structure",
+   287→    title: { ar: "هيكل صفحة HTML الكامل", en: "Complete HTML Page Structure" },
+   288→    summary: {
+   289→      ar: "تعمق في بنية صفحة HTML الكاملة: DOCTYPE, html, head, body وما يحتويه كل منها.",
+   290→      en: "Dive into the complete HTML page structure: DOCTYPE, html, head, body and what each contains.",
+   291→    },
+   292→    type: "reading",
+   293→    order: 2,
+   294→    estimatedMinutes: 20,
+   295→    isFree: true,
+   296→    isLocked: false,
+   297→    content: {
+   298→      body: {
+   299→        ar: `## الهيكل الكامل لصفحة HTML
+   300→
+   301→كل صفحة HTML احترافية تبدأ بنفس الهيكل الأساسي. فهم كل جزء منه أساسي لكتابة كود نظيف ومتوافق مع المعايير.
+   302→
+   303→\`\`\`html
+   304→<!DOCTYPE html>
+   305→<html lang="ar" dir="rtl">
+   306→<head>
+   307→  <meta charset="UTF-8">
+   308→  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   309→  <meta name="description" content="وصف الصفحة لمحركات البحث">
+   310→  <title>عنوان الصفحة</title>
+   311→  <link rel="stylesheet" href="styles.css">
+   312→</head>
+   313→<body>
+   314→  <!-- المحتوى المرئي يكتب هنا -->
+   315→  <header>...</header>
+   316→  <main>...</main>
+   317→  <footer>...</footer>
+   318→  <script src="script.js"></script>
+   319→</body>
+   320→</html>
+   321→\`\`\`
+   322→
+   323→### شرح كل جزء
+   324→
+   325→#### 1. \`<!DOCTYPE html>\`
+   326→يخبر المتصفح أن المستند يستخدم HTML5. بدون هذا السطر، قد يدخل المتصفح في "وضع التشويش" (quirks mode) ويعرض الصفحة بشكل غير متوقع.
+   327→
+   328→#### 2. \`<html lang="ar" dir="rtl">\`
+   329→- \`lang="ar"\`: يحدد لغة المحتوى (مهم للوصول و SEO)
+   330→- \`dir="rtl"\`: اتجاه الكتابة من اليمين لليسار (للعربية والعبرية)
+   331→
+   332→#### 3. \`<head>\`
+   333→يحتوي على **metadata** (بيانات وصفية) غير مرئية للمستخدم:
+   334→- \`<meta charset>\`: ترميز الأحرف (UTF-8 يدعم العربية)
+   335→- \`<meta name="viewport">\`: ضروري للموبايل
+   336→- \`<meta name="description">\`: وصف يظهر في نتائج البحث
+   337→- \`<title>\`: ما يظهر في تبويب المتصفح
+   338→- \`<link>\`: ربط ملفات CSS و الأيقونات
+   339→
+   340→#### 4. \`<body>\`
+   341→يحتوي على **كل المحتوى المرئي** للصفحة: النصوص، الصور، الأزرار، الروابط...
+   342→
+   343→### الوسوم الدلالية (Semantic HTML5)
+   344→
+   345→بدلاً من استخدام \`<div>\` لكل شيء، HTML5 يقدم وسوماً دلالية تخبر المتصفح ومحركات البحث عن **معنى** كل قسم:
+   346→
+   347→\`\`\`html
+   348→<header>   <!-- ترويسة الموقع -->
+   349→<nav>      <!-- قائمة التنقل -->
+   350→<main>     <!-- المحتوى الرئيسي -->
+   351→<article>  <!-- مقال أو منشور مستقل -->
+   352→<section>  <!-- قسم ذو صلة -->
+   353→<aside>    <!-- محتوى جانبي -->
+   354→<footer>   <!-- تذييل الموقع -->
+   355→<figure>   <!-- صورة مع تعليق -->
+   356→\`\`\`
+   357→
+   358→### لماذا الدلالة مهمة؟
+   359→
+   360→1. **SEO**: محركات البحث تفهم المحتوى بشكل أفضل
+   361→2. **الوصول**: قارئات الشاشة تستخدم الدلالة للتنقل
+   362→3. **الصيانة**: كودك يصبح أوضح وأسهل في الفهم
+   363→4. **التنسيق**: يمكنك تنسيق وسوم محددة بسهولة
+   364→
+   365→### تجربة
+   366→
+   367→في المحرر بالأسفل، جرّب إضافة:
+   368→- وسم \`<nav>\` يحتوي على روابط
+   369→- وسم \`<article>\` بداخله \`<h2>\` و \`<p>\`
+   370→- وسم \`<footer>\` بمعلومات حقوق النشر`,
+   371→      },
+   372→      codeSamples: [
+   373→        {
+   374→          id: "html-structure-2",
+   375→          language: "html",
+   376→          filename: "index.html",
+   377→          code: `<!DOCTYPE html>
+   378→<html lang="ar" dir="rtl">
+   379→<head>
+   380→  <meta charset="UTF-8">
+   381→  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   382→  <title>مدونتي التقنية</title>
+   383→</head>
+   384→<body>
+   385→  <header>
+   386→    <h1>مدونتي التقنية</h1>
+   387→    <nav>
+   388→      <a href="#">الرئيسية</a> |
+   389→      <a href="#">المقالات</a> |
+   390→      <a href="#">عني</a>
+   391→    </nav>
+   392→  </header>
+   393→  
+   394→  <main>
+   395→    <article>
+   396→      <h2>تعلم HTML في 7 أيام</h2>
+   397→      <p>HTML هي أساس كل موقع ويب...</p>
+   398→      <p>في هذا المقال سنتعرف على...</p>
+   399→    </article>
+   400→  </main>
+   401→  
+   402→  <footer>
+   403→    <p>© 2025 مدونتي التقنية. جميع الحقوق محفوظة.</p>
+   404→  </footer>
+   405→</body>
+   406→</html>`,
+   407→          explanation: {
+   408→            ar: "هيكل صفحة كامل باستخدام الوسوم الدلالية. لاحظ كيف كل وسم يصف محتواه بوضوح.",
+   409→            en: "A complete page structure using semantic tags. Notice how each tag clearly describes its content.",
+   410→          },
+   411→          runnable: true,
+   412→        },
+   413→      ],
+   414→      callouts: [
+   415→        {
+   416→          type: "warning",
+   417→          title: { ar: "تنبيه", en: "Warning" },
+   418→          body: {
+   419→            ar: "لا تنسَ إضافة <meta name=\"viewport\"> لكل صفحة! بدونها، صفحتك لن تعمل بشكل صحيح على الموبايل وستظهر مصغرة جداً.",
+   420→            en: "Don't forget to add <meta name=\"viewport\"> to every page! Without it, your page won't work properly on mobile and will appear zoomed out.",
+   421→          },
+   422→        },
+   423→        {
+   424→          type: "info",
+   425→          title: { ar: "معلومة", en: "Info" },
+   426→          body: {
+   427→            ar: "التعليقات في HTML تكتب بين <!-- و -->. استخدمها لتوثيق كودك ولكن لا تترك معلومات حساسة فيها لأنها مرئية في المصدر.",
+   428→            en: "Comments in HTML are written between <!-- and -->. Use them to document your code but don't leave sensitive info as they're visible in source.",
+   429→          },
+   430→        },
+   431→      ],
+   432→      keyTakeaways: [
+   433→        {
+   434→          ar: "كل صفحة HTML تبدأ بـ <!DOCTYPE html> ثم <html> الذي يحتوي على <head> و <body>.",
+   435→          en: "Every HTML page starts with <!DOCTYPE html> then <html> containing <head> and <body>.",
+   436→        },
+   437→        {
+   438→          ar: "<head> يحتوي على metadata غير مرئية، و <body> يحتوي على المحتوى المرئي.",
+   439→          en: "<head> contains invisible metadata, <body> contains visible content.",
+   440→        },
+   441→        {
+   442→          ar: "استخدم الوسوم الدلالية (header, nav, main, article, section, aside, footer) بدلاً من <div> عند الإمكان.",
+   443→          en: "Use semantic tags (header, nav, main, article, section, aside, footer) instead of <div> when possible.",
+   444→        },
+   445→        {
+   446→          ar: "السمة lang مهمة للوصول و SEO، و dir=\"rtl\" ضرورية للعربية.",
+   447→          en: "The lang attribute is important for accessibility and SEO, and dir=\"rtl\" is essential for Arabic.",
+   448→        },
+   449→      ],
+   450→    },
+   451→  },
+   452→  {
+   453→    id: "lesson-html-text",
+   454→    moduleId: "module-html-basics",
+   455→    courseId: "course-html-css",
+   456→    slug: "html-text-elements",
+   457→    title: { ar: "تنسيق النصوص في HTML", en: "Text Formatting in HTML" },
+   458→    summary: {
+   459→      ar: "كل وسوم النصوص: العناوين، الفقرات، النصوص البارزة، القوائم، والاقتباسات.",
+   460→      en: "All text tags: headings, paragraphs, emphasized text, lists, and quotes.",
+   461→    },
+   462→    type: "reading",
+   463→    order: 3,
+   464→    estimatedMinutes: 25,
+   465→    isFree: true,
+   466→    isLocked: false,
+   467→    content: {
+   468→      body: {
+   469→        ar: `## العناوين (Headings)
+   470→
+   471→HTML يوفر 6 مستويات من العناوين من \`<h1>\` (الأهم) إلى \`<h6>\` (الأقل أهمية):
+   472→
+   473→\`\`\`html
+   474→<h1>العنوان الرئيسي — مرة واحدة في الصفحة</h1>
+   475→<h2>عنوان فرعي رئيسي</h2>
+   476→<h3>عنوان فرعي</h3>
+   477→<h4>عنوان فرعي أصغر</h4>
+   478→<h5>عنوان فرعي صغير</h5>
+   479→<h6>أصغر عنوان</h6>
+   480→\`\`\`
+   481→
+   482→**أفضل الممارسات:**
+   483→- استخدم \`<h1>\` مرة واحدة فقط لكل صفحة (مهم لـ SEO)
+   484→- الحفاظ على التسلسل الهرمي (لا تقفز من h1 إلى h4)
+   485→- العناوين للهيكل وليس للتنسيق (للتنسيق استخدم CSS)
+   486→
+   487→## الفقرات والنصوص
+   488→
+   489→\`\`\`html
+   490→<p>هذه فقرة عادية. المتصفح يضيف هامشاً تلقائياً قبلها وبعدها.</p>
+   491→
+   492→<p>
+   493→  يمكنك إضافة <strong>نص مهم (عريض)</strong> أو <em>نص مشدد (مائل)</em>.
+   494→  الفرق بين <strong> و <b>: الأول يدل على أهمية دلالية، الثاني مجرد تنسيق.
+   495→</p>
+   496→
+   497→<p>
+   498→  يمكنك استخدام <mark>نص مميز بخلفية صفراء</mark> أو 
+   499→  <small>نص صغير</small> أو <del>نص محذوف</del> أو 
+   500→  <ins>نص مضاف</ins>.
+   501→</p>
+   502→
+   503→<p>
+   504→  الصيغة العلمية: H<sub>2</sub>O و E = mc<sup>2</sup>
+   505→  و <code>const x = 5;</code> للكود.
+   506→</p>
+   507→\`\`\`
+   508→
+   509→## القوائم (Lists)
+   510→
+   511→### قائمة غير مرتبة (Unordered)
+   512→\`\`\`html
+   513→<ul>
+   514→  <li>تعلم HTML</li>
+   515→  <li>تعلم CSS</li>
+   516→  <li>تعلم JavaScript</li>
+   517→</ul>
+   518→\`\`\`
+   519→
+   520→### قائمة مرتبة (Ordered)
+   521→\`\`\`html
+   522→<ol>
+   523→  <li>افتح المحرر</li>
+   524→  <li>اكتب الكود</li>
+   525→  <li>احفظ الملف</li>
+   526→  <li>افتحه في المتصفح</li>
+   527→</ul>
+   528→\`\`\`
+   529→
+   530→### قائمة وصفية (Description)
+   531→\`\`\`html
+   532→<dl>
+   533→  <dt>HTML</dt>
+   534→  <dd>لغة ترميز لبناء صفحات الويب</dd>
+   535→  
+   536→  <dt>CSS</dt>
+   537→  <dd>لغة لتنسيق صفحات الويب</dd>
+   538→</dl>
+   539→\`\`\`
+   540→
+   541→### قوائم متداخلة
+   542→\`\`\`html
+   543→<ul>
+   544→  <li>الواجهة الأمامية
+   545→    <ul>
+   546→      <li>HTML</li>
+   547→      <li>CSS</li>
+   548→      <li>JavaScript</li>
+   549→    </ul>
+   550→  </li>
+   551→  <li>الواجهة الخلفية
+   552→    <ul>
+   553→      <li>Node.js</li>
+   554→      <li>Python</li>
+   555→    </ul>
+   556→  </li>
+   557→</ul>
+   558→\`\`\`
+   559→
+   560→## الاقتباسات
+   561→
+   562→\`\`\`html
+   563→<p>قال تيم بيرنرز-لي:</p>
+   564→
+   565→<blockquote cite="https://example.com/quote">
+   566→  "الويب هو أكثر من مجرد تكنولوجيا؛ إنه أداة للتواصل الإنساني."
+   567→</blockquote>
+   568→
+   569→<p>كما ذكر <q>المصدر</q> في سياق الكلام.</p>
+   570→
+   571→<cite>— تيم بيرنرز-لي</cite>
+   572→\`\`\`
+   573→
+   574→## الروابط (Links)
+   575→
+   576→الروابط هي ما يجعل الويب "ويب":
+   577→
+   578→\`\`\`html
+   579→<!-- رابط خارجي -->
+   580→<a href="https://google.com" target="_blank" rel="noopener noreferrer">
+   581→  افتح Google في تبويب جديد
+   582→</a>
+   583→
+   584→<!-- رابط داخلي -->
+   585→<a href="/about">صفحة من نحن</a>
+   586→
+   587→<!-- رابط لقسم في نفس الصفحة -->
+   588→<a href="#section-1">اذهب للقسم الأول</a>
+   589→
+   590→<!-- رابط بريد إلكتروني -->
+   591→<a href="mailto:info@example.com">راسلنا</a>
+   592→
+   593→<!-- رابط هاتف -->
+   594→<a href="tel:+966500000000">اتصل بنا</a>
+   595→\`\`\`
+   596→
+   597→**ملاحظات أمنية:**
+   598→- استخدم \`rel="noopener noreferrer"\` مع \`target="_blank"\` لمنع الصفحة الجديدة من الوصول لصفحتك
+   599→- \`mailto:\` يفتح تطبيق البريد
+   600→- \`tel:\` يفتح تطبيق الهاتف على الموبايل`,
+   601→      },
+   602→      codeSamples: [
+   603→        {
+   604→          id: "html-text-1",
+   605→          language: "html",
+   606→          filename: "index.html",
+   607→          code: `<!DOCTYPE html>
+   608→<html lang="ar" dir="rtl">
+   609→<head>
+   610→  <meta charset="UTF-8">
+   611→  <title>تنسيق النصوص</title>
+   612→</head>
+   613→<body>
+   614→  <h1>دليل تعلم البرمجة</h1>
+   615→  
+   616→  <h2>المقدمة</h2>
+   617→  <p>
+   618→    تعلم البرمجة رحلة <strong>ممتعة ومستمرة</strong>. 
+   619→    ستحتاج إلى <em>الصبر</em> و <mark>الممارسة اليومية</mark>.
+   620→  </p>
+   621→  
+   622→  <h2>الخطوات</h2>
+   623→  <ol>
+   624→    <li>اختر لغة برمجة مناسبة للمبتدئين:
+   625→      <ul>
+   626→        <li>Python — سهلة وقوية</li>
+   627→        <li>JavaScript — للويب</li>
+   628→        <li>Scratch — للأطفال</li>
+   629→      </ul>
+   630→    </li>
+   631→    <li>تعلم الأساسيات</li>
+   632→    <li>ابنِ مشاريع صغيرة</li>
+   633→  </ol>
+   634→  
+   635→  <blockquote>
+   636→    "أفضل وقت لزرع شجرة كان قبل 20 سنة. ثاني أفضل وقت هو الآن."
+   637→  </blockquote>
+   638→  <cite>— مثل صيني</cite>
+   639→  
+   640→  <p>
+   641→    للمزيد، زر <a href="https://developer.mozilla.org" target="_blank" rel="noopener">MDN</a>
+   642→  </p>
+   643→</body>
+   644→</html>`,
+   645→          runnable: true,
+   646→        },
+   647→      ],
+   648→      callouts: [
+   649→        {
+   650→          type: "tip",
+   651→          title: { ar: "نصيحة للمبتدئين", en: "Tip for Beginners" },
+   652→          body: {
+   653→            ar: "لا تحفظ الوسوم! بدلاً من ذلك، افهم الغرض من كل وسم ومتى يستخدم. مع الممارسة ستصبح كتابتها تلقائية. استخدم وثائق MDN كمرجع عند الحاجة.",
+   654→            en: "Don't memorize tags! Instead, understand the purpose of each tag and when to use it. With practice, writing them becomes automatic. Use MDN docs as a reference when needed.",
+   655→          },
+   656→        },
+   657→      ],
+   658→      keyTakeaways: [
+   659→        {
+   660→          ar: "استخدم العناوين (h1-h6) هرمياً و h1 مرة واحدة فقط لكل صفحة.",
+   661→          en: "Use headings (h1-h6) hierarchically and h1 only once per page.",
+   662→        },
+   663→        {
+   664→          ar: "strong للنص المهم دلالياً، em للنص المشدد، mark للتمييز، code للكود.",
+   665→          en: "strong for semantically important text, em for emphasis, mark for highlighting, code for code.",
+   666→        },
+   667→        {
+   668→          ar: "القوائم ثلاثة أنواع: ul (غير مرتبة)، ol (مرتبة)، dl (وصفية).",
+   669→          en: "Lists come in three types: ul (unordered), ol (ordered), dl (description).",
+   670→        },
+   671→        {
+   672→          ar: "استخدم rel=\"noopener noreferrer\" مع target=\"_blank\" للأمان.",
+   673→          en: "Use rel=\"noopener noreferrer\" with target=\"_blank\" for security.",
+   674→        },
+   675→      ],
+   676→    },
+   677→  },
+   678→  {
+   679→    id: "lesson-html-media",
+   680→    moduleId: "module-html-basics",
+   681→    courseId: "course-html-css",
+   682→    slug: "html-images-media",
+   683→    title: { ar: "الصور والوسائط في HTML", en: "Images and Media in HTML" },
+   684→    summary: {
+   685→      ar: "كيفية إضافة الصور، الفيديوهات، الملفات الصوتية، والـ iframes لصفحتك.",
+   686→      en: "How to add images, videos, audio files, and iframes to your page.",
+   687→    },
+   688→    type: "reading",
+   689→    order: 4,
+   690→    estimatedMinutes: 20,
+   691→    isFree: true,
+   692→    isLocked: false,
+   693→    content: {
+   694→      body: {
+   695→        ar: `## الصور في HTML
+   696→
+   697→الصور تجعل صفحاتك جذابة وتساعد في توصيل المعلومات. وسم \`<img>\` يستخدم لإضافة صور:
+   698→
+   699→\`\`\`html
+   700→<img 
+   701→  src="photo.jpg" 
+   702→  alt="وصف الصورة" 
+   703→  width="400" 
+   704→  height="300"
+   705→  loading="lazy"
+   706→/>
+   707→\`\`\`
+   708→
+   709→### الصفات المهمة
+   710→
+   711→| الصفة | الوصف |
+   712→|-------|-------|
+   713→| \`src\` | مسار الصورة (مطلوب) |
+   714→| \`alt\` | وصف نصي (مطلوب للوصول و SEO) |
+   715→| \`width\` / \`height\` | الأبعاد (يمنع إعادة التخطيط) |
+   716→| \`loading="lazy"\` | تحميل كسول (يحسن الأداء) |
+   717→| \`title\` | نص يظهر عند المرور بالماوس |
+   718→
+   719→### تنسيقات الصور
+   720→
+   721→- **JPG/JPEG**: للصور الفوتوغرافية (ضغط lossy)
+   722→- **PNG**: للصور مع الشفافية
+   723→- **WebP**: حديث، أفضل ضغط (مدعوم في كل المتصفحات الحديثة)
+   724→- **SVG**: للرسومات المتجهة (لوجوه، أيقونات)
+   725→- **AVIF**: الأحدث، أفضل ضغط
+   726→
+   727→### الصور المتجاوبة
+   728→
+   729→\`\`\`html
+   730→<picture>
+   731→  <source srcset="image-large.webp" media="(min-width: 1024px)" type="image/webp">
+   732→  <source srcset="image-medium.webp" media="(min-width: 768px)" type="image/webp">
+   733→  <img src="image-small.webp" alt="وصف" loading="lazy">
+   734→</picture>
+   735→\`\`\`
+   736→
+   737→## الفيديو
+   738→
+   739→\`\`\`html
+   740→<video 
+   741→  width="640" 
+   742→  height="360" 
+   743→  controls 
+   744→  poster="thumbnail.jpg"
+   745→  preload="metadata"
+   746→>
+   747→  <source src="video.mp4" type="video/mp4">
+   748→  <source src="video.webm" type="video/webm">
+   749→  متصفحك لا يدعم تشغيل الفيديو.
+   750→  <track src="subtitles-ar.vtt" kind="subtitles" srclang="ar" label="العربية" default>
+   751→</video>
+   752→\`\`\`
+   753→
+   754→### صفات الفيديو
+   755→- \`controls\`: إظهار أزرار التحكم
+   756→- \`autoplay\`: تشغيل تلقائي (قد لا يعمل مع الصوت)
+   757→- \`muted\`: كتم الصوت
+   758→- \`loop\`: تكرار
+   759→- \`poster\`: صورة قبل التشغيل
+   760→- \`preload="none|metadata|auto"\`: تحكم في التحميل المسبق
+   761→
+   762→## الصوت
+   763→
+   764→\`\`\`html
+   765→<audio controls>
+   766→  <source src="audio.mp3" type="audio/mpeg">
+   767→  <source src="audio.ogg" type="audio/ogg">
+   768→  متصفحك لا يدعم تشغيل الصوت.
+   769→</audio>
+   770→\`\`\`
+   771→
+   772→## YouTube والـ iframe
+   773→
+   774→\`\`\`html
+   775→<iframe 
+   776→  width="560" 
+   777→  height="315" 
+   778→  src="https://www.youtube.com/embed/VIDEO_ID" 
+   779→  title="عنوان الفيديو"
+   780→  frameborder="0"
+   781→  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+   782→  allowfullscreen
+   783→></iframe>
+   784→\`\`\`
+   785→
+   786→**تنبيه**: استخدم \`title\` دائماً مع iframe لقارئات الشاشة.
+   787→
+   788→## الصور كروابط
+   789→
+   790→\`\`\`html
+   791→<a href="/home">
+   792→  <img src="logo.png" alt="العودة للرئيسية">
+   793→</a>
+   794→\`\`\`
+   795→
+   796→## الأيقونات (SVG inline)
+   797→
+   798→\`\`\`html
+   799→<button>
+   800→  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+   801→    <path d="M5 12h14M12 5l7 7-7 7"/>
+   802→  </svg>
+   803→  التالي
+   804→</button>
+   805→\`\`\`
+   806→
+   807→SVG inline أفضل من الصور النقطية للأيقونات لأنها:
+   808→- تتحجم بلا فقدان جودة
+   809→- تتلون مع CSS
+   810→- صغيرة الحجم
+   811→- قابلة للأنيميشن`,
+   812→      },
+   813→      codeSamples: [
+   814→        {
+   815→          id: "html-media-1",
+   816→          language: "html",
+   817→          filename: "index.html",
+   818→          code: `<!DOCTYPE html>
+   819→<html lang="ar" dir="rtl">
+   820→<head>
+   821→  <meta charset="UTF-8">
+   822→  <title>الوسائط</title>
+   823→</head>
+   824→<body>
+   825→  <h1>معرض الصور</h1>
+   826→  
+   827→  <!-- صورة عادية -->
+   828→  <figure>
+   829→    <img 
+   830→      src="https://picsum.photos/400/300" 
+   831→      alt="صورة عشوائية من Lorem Picsum"
+   832→      width="400" 
+   833→      height="300"
+   834→      loading="lazy"
+   835→      style="border-radius: 8px;"
+   836→    >
+   837→    <figcaption>صورة توضيحية</figcaption>
+   838→  </figure>
+   839→  
+   840→  <h2>فيديو تعليمي</h2>
+   841→  <video 
+   842→    width="400" 
+   843→    controls 
+   844→    poster="https://picsum.photos/400/225"
+   845→    style="border-radius: 8px;"
+   846→  >
+   847→    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+   848→    متصفحك لا يدعم الفيديو.
+   849→  </video>
+   850→  
+   851→  <h2>فيديو YouTube</h2>
+   852→  <iframe 
+   853→    width="400" 
+   854→    height="225" 
+   855→    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+   856→    title="فيديو يوتيوب"
+   857→    frameborder="0" 
+   858→    allowfullscreen
+   859→    style="border-radius: 8px;"
+   860→  ></iframe>
+   861→</body>
+   862→</html>`,
+   863→          runnable: true,
+   864→        },
+   865→      ],
+   866→      callouts: [
+   867→        {
+   868→          type: "warning",
+   869→          title: { ar: "أداء الصور", en: "Image Performance" },
+   870→          body: {
+   871→            ar: "الصور هي أكبرسبب لبطء المواقع! استخدم WebP بدلاً من PNG/JPG عندما أمكن، حدد الأبعاد دائماً، واستخدم loading=\"lazy\" للصور خارج الشاشة.",
+   872→            en: "Images are the biggest cause of slow websites! Use WebP instead of PNG/JPG when possible, always specify dimensions, and use loading=\"lazy\" for off-screen images.",
+   873→          },
+   874→        },
+   875→        {
+   876→          type: "danger",
+   877→          title: { ar: "إمكانية الوصول", en: "Accessibility" },
+   878→          body: {
+   879→            ar: "alt ليست اختيارية! قارئات الشاشة تعتمد عليها لوصف الصور للمكفوفين. إذا كانت الصورة زخرفية بحتة، استخدم alt=\"\" فارغاً.",
+   880→            en: "alt is NOT optional! Screen readers depend on it to describe images to blind users. If the image is purely decorative, use empty alt=\"\".",
+   881→          },
+   882→        },
+   883→      ],
+   884→      keyTakeaways: [
+   885→        {
+   886→          ar: "<img> يحتاج src و alt دائماً، و width/height لمنع إعادة التخطيط.",
+   887→          en: "<img> always needs src and alt, and width/height to prevent layout shift.",
+   888→        },
+   889→        {
+   890→          ar: "WebP و AVIF أفضل من PNG/JPG للأداء.",
+   891→          en: "WebP and AVIF are better than PNG/JPG for performance.",
+   892→        },
+   893→        {
+   894→          ar: "<picture> يسمح بصور متجاوبة بمصادر متعددة.",
+   895→          en: "<picture> allows responsive images with multiple sources.",
+   896→        },
+   897→        {
+   898→          ar: "حدد title دائماً مع iframe للوصول، واستخدم loading=\"lazy\" للصور.",
+   899→          en: "Always specify title with iframes for accessibility, and use loading=\"lazy\" for images.",
+   900→        },
+   901→      ],
+   902→    },
+   903→  },
+   904→  {
+   905→    id: "lesson-html-forms",
+   906→    moduleId: "module-html-basics",
+   907→    courseId: "course-html-css",
+   908→    slug: "html-forms-inputs",
+   909→    title: { ar: "النماذج والمدخلات", en: "Forms and Inputs" },
+   910→    summary: {
+   911→      ar: "بناء نماذج تفاعلية: input, textarea, select, checkbox, radio والتحقق من الصحة.",
+   912→      en: "Building interactive forms: input, textarea, select, checkbox, radio and validation.",
+   913→    },
+   914→    type: "reading",
+   915→    order: 5,
+   916→    estimatedMinutes: 30,
+   917→    isFree: false,
+   918→    isLocked: false,
+   919→    content: {
+   920→      body: {
+   921→        ar: `## أساسيات النماذج
+   922→
+   923→النماذج هي كيفية تفاعل المستخدمين مع موقعك: تسجيل الدخول، البحث، إرسال رسالة، إتمام شراء. كلها نماذج.
+   924→
+   925→\`\`\`html
+   926→<form action="/submit" method="POST">
+   927→  <!-- الحقول هنا -->
+   928→  <button type="submit">إرسال</button>
+   929→</form>
+   930→\`\`\`
+   931→
+   932→### الصفة \`action\` و \`method\`
+   933→- \`action\`: URL الخادم الذي سيرسل له النموذج
+   934→- \`method\`: GET (افتراضي، يظهر في URL) أو POST (مخفي)
+   935→
+   936→## أنواع المدخلات
+   937→
+   938→### نص عادي
+   939→\`\`\`html
+   940→<label for="name">الاسم:</label>
+   941→<input type="text" id="name" name="name" placeholder="اكتب اسمك" required>
+   942→\`\`\`
+   943→
+   944→### أنواع \`type\` المختلفة
+   945→\`\`\`html
+   946→<input type="email" name="email" placeholder="email@example.com">
+   947→<input type="password" name="password" minlength="8">
+   948→<input type="number" name="age" min="1" max="120">
+   949→<input type="tel" name="phone">
+   950→<input type="url" name="website">
+   951→<input type="date" name="birthdate">
+   952→<input type="time" name="appointment">
+   953→<input type="datetime-local" name="datetime">
+   954→<input type="month" name="month">
+   955→<input type="week" name="week">
+   956→<input type="color" name="favcolor">
+   957→<input type="range" name="volume" min="0" max="100">
+   958→<input type="file" name="document" accept=".pdf,.doc">
+   959→<input type="checkbox" name="agree">
+   960→<input type="radio" name="gender" value="male">
+   961→<input type="hidden" name="csrf_token" value="abc123">
+   962→<input type="submit" value="إرسال">
+   963→\`\`\`
+   964→
+   965→## الحقول الخاصة
+   966→
+   967→### Textarea (نص متعدد الأسطر)
+   968→\`\`\`html
+   969→<label for="bio">نبذة عنك:</label>
+   970→<textarea id="bio" name="bio" rows="5" cols="40" maxlength="500" 
+   971→  placeholder="اكتب نبذة مختصرة..."></textarea>
+   972→\`\`\`
+   973→
+   974→### Select (قائمة منسدلة)
+   975→\`\`\`html
+   976→<label for="country">الدولة:</label>
+   977→<select id="country" name="country">
+   978→  <option value="">اختر دولتك</option>
+   979→  <option value="sa">السعودية</option>
+   980→  <option value="ae">الإمارات</option>
+   981→  <option value="kw">الكويت</option>
+   982→  <optgroup label="دول أخرى">
+   983→    <option value="eg">مصر</option>
+   984→    <option value="jo">الأردن</option>
+   985→  </optgroup>
+   986→</select>
+   987→\`\`\`
+   988→
+   989→### Checkbox و Radio
+   990→\`\`\`html
+   991→<fieldset>
+   992→  <legend>اختر اهتماماتك:</legend>
+   993→  <label>
+   994→    <input type="checkbox" name="interests" value="web"> تطوير الويب
+   995→  </label>
+   996→  <label>
+   997→    <input type="checkbox" name="interests" value="mobile"> تطبيقات الموبايل
+   998→  </label>
+   999→</fieldset>
+  1000→
+  1001→<fieldset>
+  1002→  <legend>المستوى:</legend>
+  1003→  <label>
+  1004→    <input type="radio" name="level" value="beginner" checked> مبتدئ
+  1005→  </label>
+  1006→  <label>
+  1007→    <input type="radio" name="level" value="advanced"> متقدم
+  1008→  </label>
+  1009→</fieldset>
+  1010→\`\`\`
+  1011→
+  1012→## التحقق من الصحة (HTML5 Validation)
+  1013→
+  1014→\`\`\`html
+  1015→<form>
+  1016→  <!-- required: حقل إلزامي -->
+  1017→  <input type="text" required>
+  1018→  
+  1019→  <!-- pattern: تعبير منتظم -->
+  1020→  <input type="text" pattern="[A-Za-z]{3,}" title="3 أحرف على الأقل">
+  1021→  
+  1022→  <!-- minlength / maxlength -->
+  1023→  <input type="password" minlength="8" maxlength="32">
+  1024→  
+  1025→  <!-- min / max للأرقام والتواريخ -->
+  1026→  <input type="number" min="0" max="100" step="5">
+  1027→  
+  1028→  <!-- التحقق المخصص بـ JavaScript -->
+  1029→  <input type="email" 
+  1030→    oninvalid="this.setCustomValidity('بريد غير صالح')" 
+  1031→    oninput="this.setCustomValidity('')">
+  1032→</form>
+  1033→\`\`\`
+  1034→
+  1035→## أفضل الممارسات
+  1036→
+  1037→1. **استخدم \`<label>\` دائماً**: انقر على الـ label يركز على الحقل
+  1038→2. **استخدم \`fieldset\` و \`legend\`** لتجميع الحقول ذات الصلة
+  1039→3. **حدد \`autocomplete\`**: يحسن تجربة المستخدم
+  1040→4. **استخدم \`inputmode\`** للموبايل: يظهر لوحة مفاتيح مناسبة
+  1041→5. **التحقق من جانب العميل والخادم**: لا تعتمد على HTML فقط
+  1042→
+  1043→\`\`\`html
+  1044→<label for="email">البريد الإلكتروني</label>
+  1045→<input 
+  1046→  type="email" 
+  1047→  id="email" 
+  1048→  name="email" 
+  1049→  required 
+  1050→  autocomplete="email"
+  1051→  inputmode="email"
+  1052→  placeholder="you@example.com"
+  1053→>
+  1054→\`\`\``,
+  1055→      },
+  1056→      codeSamples: [
+  1057→        {
+  1058→          id: "html-forms-1",
+  1059→          language: "html",
+  1060→          filename: "index.html",
+  1061→          code: `<!DOCTYPE html>
+  1062→<html lang="ar" dir="rtl">
+  1063→<head>
+  1064→  <meta charset="UTF-8">
+  1065→  <title>نموذج التسجيل</title>
+  1066→  <style>
+  1067→    body { font-family: sans-serif; max-width: 500px; margin: 2rem auto; padding: 0 1rem; }
+  1068→    form { display: flex; flex-direction: column; gap: 1rem; }
+  1069→    label { font-weight: 600; display: block; margin-bottom: 0.25rem; }
+  1070→    input, select, textarea { 
+  1071→      width: 100%; padding: 0.5rem; border: 1px solid #ccc; 
+  1072→      border-radius: 0.375rem; font-size: 1rem; 
+  1073→    }
+  1074→    button { 
+  1075→      background: #0ea5e9; color: white; padding: 0.75rem; 
+  1076→      border: none; border-radius: 0.375rem; font-size: 1rem; 
+  1077→      cursor: pointer; 
+  1078→    }
+  1079→    button:hover { background: #0284c7; }
+  1080→    .field { display: flex; flex-direction: column; }
+  1081→  </style>
+  1082→</head>
+  1083→<body>
+  1084→  <h1>تسجيل حساب جديد</h1>
+  1085→  
+  1086→  <form action="#" method="POST">
+  1087→    <div class="field">
+  1088→      <label for="name">الاسم الكامل *</label>
+  1089→      <input type="text" id="name" name="name" required minlength="3"
+  1090→             placeholder="اكتب اسمك الكامل">
+  1091→    </div>
+  1092→    
+  1093→    <div class="field">
+  1094→      <label for="email">البريد الإلكتروني *</label>
+  1095→      <input type="email" id="email" name="email" required 
+  1096→             autocomplete="email" placeholder="you@example.com">
+  1097→    </div>
+  1098→    
+  1099→    <div class="field">
+  1100→      <label for="password">كلمة المرور *</label>
+  1101→      <input type="password" id="password" name="password" required
+  1102→             minlength="8" placeholder="8 أحرف على الأقل">
+  1103→    </div>
+  1104→    
+  1105→    <div class="field">
+  1106→      <label for="age">العمر</label>
+  1107→      <input type="number" id="age" name="age" min="13" max="120" value="25">
+  1108→    </div>
+  1109→    
+  1110→    <div class="field">
+  1111→      <label for="country">الدولة</label>
+  1112→      <select id="country" name="country">
+  1113→        <option value="">اختر دولتك</option>
+  1114→        <option value="sa">السعودية</option>
+  1115→        <option value="ae">الإمارات</option>
+  1116→        <option value="eg">مصر</option>
+  1117→      </select>
+  1118→    </div>
+  1119→    
+  1120→    <fieldset>
+  1121→      <legend>المستوى</legend>
+  1122→      <label><input type="radio" name="level" value="beginner" checked> مبتدئ</label>
+  1123→      <label><input type="radio" name="level" value="intermediate"> متوسط</label>
+  1124→      <label><input type="radio" name="level" value="advanced"> متقدم</label>
+  1125→    </fieldset>
+  1126→    
+  1127→    <div class="field">
+  1128→      <label for="bio">نبذة عنك</label>
+  1129→      <textarea id="bio" name="bio" rows="4" maxlength="500"
+  1130→                placeholder="اختياري — أخبرنا عن نفسك"></textarea>
+  1131→    </div>
+  1132→    
+  1133→    <label>
+  1134→      <input type="checkbox" name="terms" required>
+  1135→      أوافق على الشروط والأحكام
+  1136→    </label>
+  1137→    
+  1138→    <button type="submit">إنشاء الحساب</button>
+  1139→  </form>
+  1140→</body>
+  1141→</html>`,
+  1142→          runnable: true,
+  1143→        },
+  1144→      ],
+  1145→      callouts: [
+  1146→        {
+  1147→          type: "tip",
+  1148→          title: { ar: "تحسين تجربة الموبايل", en: "Mobile UX" },
+  1149→          body: {
+  1150→            ar: "استخدم inputmode=\"numeric\" للأرقام، inputmode=\"tel\" للهاتف، inputmode=\"email\" للبريد. هذا يعرض لوحة المفاتيح المناسبة على الموبايل ويحسن التجربة بشكل كبير.",
+  1151→            en: "Use inputmode=\"numeric\" for numbers, inputmode=\"tel\" for phone, inputmode=\"email\" for email. This shows the appropriate keyboard on mobile and greatly improves UX.",
+  1152→          },
+  1153→        },
+  1154→      ],
+  1155→      keyTakeaways: [
+  1156→        {
+  1157→          ar: "<form> يحتاج action و method، وحقل submit لإرساله.",
+  1158→          en: "<form> needs action and method, and a submit field to send it.",
+  1159→        },
+  1160→        {
+  1161→          ar: "HTML5 يدعم 20+ نوع input: email, password, number, date, color, file, range, etc.",
+  1162→          en: "HTML5 supports 20+ input types: email, password, number, date, color, file, range, etc.",
+  1163→        },
+  1164→        {
+  1165→          ar: "اربط <label> بالحقل عبر for=\"id\" لتحسين الوصول وقابلية الاستخدام.",
+  1166→          en: "Link <label> to field via for=\"id\" to improve accessibility and usability.",
+  1167→        },
+  1168→        {
+  1169→          ar: "التحقق من HTML5 (required, pattern, min/max) مفيد لكن لا يكفي — تحقق من الخادم أيضاً.",
+  1170→          en: "HTML5 validation (required, pattern, min/max) is helpful but not enough — also validate server-side.",
+  1171→        },
+  1172→      ],
+  1173→    },
+  1174→  },
+  1175→  {
+  1176→    id: "lesson-html-quiz-1",
+  1177→    moduleId: "module-html-basics",
+  1178→    courseId: "course-html-css",
+  1179→    slug: "html-basics-quiz",
+  1180→    title: { ar: "اختبار: أساسيات HTML", en: "Quiz: HTML Basics" },
+  1181→    summary: {
+  1182→      ar: "اختبر فهمك لأساسيات HTML من خلال 5 أسئلة شاملة.",
+  1183→      en: "Test your understanding of HTML basics with 5 comprehensive questions.",
+  1184→    },
+  1185→    type: "quiz",
+  1186→    order: 6,
+  1187→    estimatedMinutes: 10,
+  1188→    isFree: true,
+  1189→    isLocked: false,
+  1190→    content: {
+  1191→      body: {
+  1192→        ar: `## اختبار أساسيات HTML
+  1193→
+  1194→أجب عن الأسئلة التالية للتحقق من فهمك للدروس السابقة. ستحصل على نقاط خبرة فور اجتيازك للاختبار بنسبة 70% أو أعلى.`,
+  1195→        en: `## HTML Basics Quiz
+  1196→
+  1197→Answer the following questions to verify your understanding of previous lessons. You'll earn XP instantly upon passing with 70% or higher.`,
+  1198→      },
+  1199→      quiz: {
+  1200→        id: "quiz-html-basics",
+  1201→        passingScore: 70,
+  1202→        questions: [
+  1203→          {
+  1204→            id: "q1",
+  1205→            type: "single-choice",
+  1206→            prompt: { ar: "ماذا تعني HTML؟", en: "What does HTML stand for?" },
+  1207→            options: [
+  1208→              { ar: "HyperText Markup Language", en: "HyperText Markup Language" },
+  1209→              { ar: "High Tech Modern Language", en: "High Tech Modern Language" },
+  1210→              { ar: "Home Tool Markup Language", en: "Home Tool Markup Language" },
+  1211→              { ar: "Hyperlink Text Management Language", en: "Hyperlink Text Management Language" },
+  1212→            ],
+  1213→            correctAnswers: [0],
+  1214→            explanation: {
+  1215→              ar: "HTML تعني HyperText Markup Language، وهي لغة ترميز تصف هيكل صفحات الويب.",
+  1216→              en: "HTML stands for HyperText Markup Language, a markup language that describes web page structure.",
+  1217→            },
+  1218→            points: 20,
+  1219→          },
+  1220→          {
+  1221→            id: "q2",
+  1222→            type: "single-choice",
+  1223→            prompt: { ar: "أي وسم يستخدم مرة واحدة فقط في كل صفحة بشكل مثالي؟", en: "Which tag should ideally appear only once per page?" },
+  1224→            options: [
+  1225→              { ar: "<div>", en: "<div>" },
+  1226→              { ar: "<h1>", en: "<h1>" },
+  1227→              { ar: "<p>", en: "<p>" },
+  1228→              { ar: "<span>", en: "<span>" },
+  1229→            ],
+  1230→            correctAnswers: [1],
+  1231→            explanation: {
+  1232→              ar: "<h1> يستخدم مرة واحدة لكل صفحة لأنه العنوان الرئيسي و مهم لـ SEO.",
+  1233→              en: "<h1> should appear once per page as it's the main heading and important for SEO.",
+  1234→            },
+  1235→            points: 20,
+  1236→          },
+  1237→          {
+  1238→            id: "q3",
+  1239→            type: "multiple-choice",
+  1240→            prompt: { ar: "أي من الصفات إلزامية في وسم <img>؟", en: "Which attributes are mandatory on <img>?" },
+  1241→            options: [
+  1242→              { ar: "src", en: "src" },
+  1243→              { ar: "alt", en: "alt" },
+  1244→              { ar: "title", en: "title" },
+  1245→              { ar: "width", en: "width" },
+  1246→            ],
+  1247→            correctAnswers: [0, 1],
+  1248→            explanation: {
+  1249→              ar: "src (مصدر الصورة) و alt (الوصف النصي) إلزاميان. alt ضروري للوصول و SEO.",
+  1250→              en: "src (image source) and alt (text description) are mandatory. alt is essential for accessibility and SEO.",
+  1251→            },
+  1252→            points: 20,
+  1253→          },
+  1254→          {
+  1255→            id: "q4",
+  1256→            type: "true-false",
+  1257→            prompt: { ar: "HTML هي لغة برمجة بمعناها الحرفي.", en: "HTML is a programming language in the literal sense." },
+  1258→            options: [
+  1259→              { ar: "صحيح", en: "True" },
+  1260→              { ar: "خطأ", en: "False" },
+  1261→            ],
+  1262→            correctAnswers: [1],
+  1263→            explanation: {
+  1264→              ar: "خطأ! HTML لغة ترميز (markup) وليست لغة برمجة. لا تحتوي على منطق أو شروط أو حلقات.",
+  1265→              en: "False! HTML is a markup language, not a programming language. It has no logic, conditions, or loops.",
+  1266→            },
+  1267→            points: 20,
+  1268→          },
+  1269→          {
+  1270→            id: "q5",
+  1271→            type: "single-choice",
+  1272→            prompt: { ar: "ماذا يفعل rel=\"noopener noreferrer\" مع target=\"_blank\"؟", en: "What does rel=\"noopener noreferrer\" do with target=\"_blank\"?" },
+  1273→            options: [
+  1274→              { ar: "يفتح الرابط بشكل أسرع", en: "Opens the link faster" },
+  1275→              { ar: "يمنع الصفحة الجديدة من الوصول لصفحتك", en: "Prevents the new page from accessing your page" },
+  1276→              { ar: "يجعل الرابط غير قابل للنقر", en: "Makes the link non-clickable" },
+  1277→              { ar: "يحسن SEO", en: "Improves SEO" },
+  1278→            ],
+  1279→            correctAnswers: [1],
+  1280→            explanation: {
+  1281→              ar: "يمنع الصفحة الجديدة من الوصول لكائن window الأصلي، مما يحمي من هجمات reverse tabnabbing.",
+  1282→              en: "It prevents the new page from accessing the original window object, protecting against reverse tabnabbing attacks.",
+  1283→            },
+  1284→            points: 20,
+  1285→          },
+  1286→        ],
+  1287→      },
+  1288→    },
+  1289→  },
+  1290→];
+  1291→
+  1292→const module2Lessons: Lesson[] = [
+  1293→  {
+  1294→    id: "lesson-css-intro",
+  1295→    moduleId: "module-css-basics",
+  1296→    courseId: "course-html-css",
+  1297→    slug: "css-introduction",
+  1298→    title: { ar: "مقدمة في CSS", en: "Introduction to CSS" },
+  1299→    summary: {
+  1300→      ar: "ما هو CSS، كيف يرتبط بـ HTML، والمحددات والخصائص الأساسية.",
+  1301→      en: "What is CSS, how it relates to HTML, and basic selectors and properties.",
+  1302→    },
+  1303→    type: "reading",
+  1304→    order: 1,
+  1305→    estimatedMinutes: 20,
+  1306→    isFree: true,
+  1307→    isLocked: false,
+  1308→    content: {
+  1309→      body: {
+  1310→        ar: `## ما هو CSS؟
+  1311→
+  1312→**CSS** (Cascading Style Sheets) هي لغة تنسيق تصف كيف يبدو محتوى HTML. إذا كانت HTML الهيكل العظمي، فإن CSS هي الجلد والملابس والزينة.
+  1313→
+  1314→بدون CSS، كل المواقع ستبدو كمستندات نصية مملة. CSS تعطيك تحكماً كاملاً في:
+  1315→- الألوان والخلفيات
+  1316→- الخطوط وأحجامها
+  1317→- التباعد والهوامش
+  1318→- التخطيط (Layout)
+  1319→- الحركات والانتقالات
+  1320→- التجاوب مع الشاشات المختلفة
+  1321→
+  1322→## طرق إضافة CSS
+  1323→
+  1324→### 1. Inline Style (مباشر في الوسم)
+  1325→\`\`\`html
+  1326→<p style="color: red; font-size: 18px;">نص أحمر كبير</p>
+  1327→\`\`\`
+  1328→
+  1329→**عيوب**: لا يُنصح به، يخلط التنسيق بالمحتوى، لا يمكن إعادة استخدامه.
+  1330→
+  1331→### 2. Internal Style (في head الصفحة)
+  1332→\`\`\`html
+  1333→<head>
+  1334→  <style>
+  1335→    p { color: red; font-size: 18px; }
+  1336→  </style>
+  1337→</head>
+  1338→\`\`\`
+  1339→
+  1340→**عيوب**: محدود لصفحة واحدة.
+  1341→
+  1342→### 3. External Style Sheet (ملف خارجي) — الأفضل
+  1343→\`\`\`html
+  1344→<head>
+  1345→  <link rel="stylesheet" href="styles.css">
+  1346→</head>
+  1347→\`\`\`
+  1348→
+  1349→**مميزات**:
+  1350→- فصل تام بين المحتوى والتنسيق
+  1351→- قابل لإعادة الاستخدام في عدة صفحات
+  1352→- المتصفح يخزنه مؤقتاً (أداء أفضل)
+  1353→- سهولة الصيانة
+  1354→
+  1355→## بنية قاعدة CSS
+  1356→
+  1357→\`\`\`
+  1358→selector {
+  1359→  property: value;
+  1360→  property: value;
+  1361→}
+  1362→\`\`\`
+  1363→
+  1364→مثال:
+  1365→\`\`\`css
+  1366→h1 {
+  1367→  color: #0ea5e9;
+  1368→  font-size: 2rem;
+  1369→  font-weight: bold;
+  1370→}
+  1371→\`\`\`
+  1372→
+  1373→## المحددات (Selectors)
+  1374→
+  1375→### 1. محدد العنصر
+  1376→\`\`\`css
+  1377→p { color: #333; }       /* جميع الفقرات */
+  1378→h1 { color: blue; }      /* جميع العناوين */
+  1379→a { text-decoration: none; }
+  1380→\`\`\`
+  1381→
+  1382→### 2. محدد الصف (Class) — يبدأ بنقطة
+  1383→\`\`\`css
+  1384→.button {
+  1385→  background: blue;
+  1386→  color: white;
+  1387→  padding: 0.5rem 1rem;
+  1388→}
+  1389→\`\`\`html
+  1390→<button class="button">اضغط</button>
+  1391→<a class="button" href="#">رابط كزر</a>
+  1392→\`\`\`
+  1393→
+  1394→### 3. محدد المُعرّف (ID) — يبدأ بـ #
+  1395→\`\`\`css
+  1396→#main-header {
+  1397→  background: navy;
+  1398→  color: white;
+  1399→}
+  1400→\`\`\`html
+  1401→<header id="main-header">...</header>
+  1402→\`\`\`
+  1403→
+  1404→**ملاحظة**: ID يجب أن يكون فريداً في الصفحة. استخدم class للأغراض العامة.
+  1405→
+  1406→### 4. محددات متعددة
+  1407→\`\`\`css
+  1408→/* نفس التنسيق لعدة عناصر */
+  1409→h1, h2, h3 {
+  1410→  color: #333;
+  1411→  font-family: 'Cairo', sans-serif;
+  1412→}
+  1413→
+  1414→/* عناصر متداخلة */
+  1415→nav a {
+  1416→  text-decoration: none;
+  1417→  color: inherit;
+  1418→}
+  1419→
+  1420→/* ابن مباشر فقط */
+  1421→nav > a {
+  1422→  margin: 0 0.5rem;
+  1423→}
+  1424→\`\`\`
+  1425→
+  1426→### 5. محددات الصفات (Attribute selectors)
+  1427→\`\`\`css
+  1428→input[type="text"] { border: 1px solid #ccc; }
+  1429→input[type="checkbox"] { width: 20px; height: 20px; }
+  1430→a[href^="https"] { color: green; }  /* يبدأ بـ */
+  1431→a[href$=".pdf"] { color: red; }     /* ينتهي بـ */
+  1432→\`\`\`
+  1433→
+  1434→### 6. Pseudo-classes (حالات خاصة)
+  1435→\`\`\`css
+  1436→a:link { color: blue; }       /* رابط لم يزر */
+  1437→a:visited { color: purple; }  /* رابط مزار */
+  1438→a:hover { color: red; }       /* عند المرور بالماوس */
+  1439→a:active { color: orange; }   /* عند الضغط */
+  1440→a:focus { outline: 2px solid blue; } /* عند التركيز */
+  1441→
+  1442→li:first-child { color: green; }
+  1443→li:last-child { color: red; }
+  1444→li:nth-child(odd) { background: #f0f0f0; }
+  1445→li:nth-child(3n+1) { color: blue; }
+  1446→\`\`\`
+  1447→
+  1448→## الخصائص الشائعة
+  1449→
+  1450→### الألوان
+  1451→\`\`\`css
+  1452→color: red;
+  1453→color: #ff0000;
+  1454→color: rgb(255, 0, 0);
+  1455→color: rgba(255, 0, 0, 0.5);
+  1456→color: hsl(0, 100%, 50%);
+  1457→color: var(--my-color);
+  1458→\`\`\`
+  1459→
+  1460→### الخطوط
+  1461→\`\`\`css
+  1462→font-family: 'Cairo', sans-serif;
+  1463→font-size: 16px;        /* أو 1rem, 100%, 1em */
+  1464→font-weight: normal;    /* أو 400, bold, 700 */
+  1465→font-style: italic;
+  1466→line-height: 1.6;
+  1467→text-align: center;     /* أو right, left, justify */
+  1468→text-decoration: underline;
+  1469→text-transform: uppercase;
+  1470→\`\`\`
+  1471→
+  1472→### الصندوق (Box Model)
+  1473→\`\`\`css
+  1474→.box {
+  1475→  width: 200px;
+  1476→  height: 100px;
+  1477→  padding: 20px;        /* مساحة داخلية */
+  1478→  border: 2px solid #333;
+  1479→  margin: 10px;         /* مساحة خارجية */
+  1480→  box-sizing: border-box; /* مهم! */
+  1481→}
+  1482→\`\`\`
+  1483→
+  1484→**مهم دائماً**: أضف \`box-sizing: border-box\` لكل العناصر:
+  1485→\`\`\`css
+  1486→* { box-sizing: border-box; }
+  1487→\`\`\`
+  1488→
+  1489→هذا يجعل width/height تشمل padding و border، مما يبسط الحسابات.`,
+  1490→      },
+  1491→      codeSamples: [cssSample1],
+  1492→      callouts: [
+  1493→        {
+  1494→          type: "info",
+  1495→          title: { ar: "أولوية CSS", en: "CSS Specificity" },
+  1496→          body: {
+  1497→            ar: "ترتيب الأولوية (من الأعلى للأقل): !important > inline style > #id > .class > tag. تجنب !important قدر الإمكان لأنه يجعل الصيانة صعبة.",
+  1498→            en: "Priority order (high to low): !important > inline style > #id > .class > tag. Avoid !important when possible as it makes maintenance difficult.",
+  1499→          },
+  1500→        },
+  1501→      ],
+  1502→      keyTakeaways: [
+  1503→        {
+  1504→          ar: "CSS تفصل التنسيق عن المحتوى، وملف خارجي هو أفضل طريقة.",
+  1505→          en: "CSS separates presentation from content; an external file is best practice.",
+  1506→        },
+  1507→        {
+  1508→          ar: "المحددات: tag، .class (متكرر)، #id (فريد)، [attr]، :pseudo-class.",
+  1509→          en: "Selectors: tag, .class (reusable), #id (unique), [attr], :pseudo-class.",
+  1510→        },
+  1511→        {
+  1512→          ar: "أضف * { box-sizing: border-box; } دائماً في بداية ملف CSS.",
+  1513→          en: "Always add * { box-sizing: border-box; } at the start of CSS files.",
+  1514→        },
+  1515→        {
+  1516→          ar: "تجنب !important، اعتمد على الأولوية الطبيعية للمحددات.",
+  1517→          en: "Avoid !important, rely on natural selector specificity.",
+  1518→        },
+  1519→      ],
+  1520→    },
+  1521→  },
+  1522→  {
+  1523→    id: "lesson-css-box-model",
+  1524→    moduleId: "module-css-basics",
+  1525→    courseId: "course-html-css",
+  1526→    slug: "css-box-model",
+  1527→    title: { ar: "نموذج الصندوق (Box Model)", en: "The Box Model" },
+  1528→    summary: {
+  1529→      ar: "افهم margin, padding, border, content وكيف يحسب المتصفح الأبعاد.",
+  1530→      en: "Understand margin, padding, border, content and how the browser calculates dimensions.",
+  1531→    },
+  1532→    type: "reading",
+  1533→    order: 2,
+  1534→    estimatedMinutes: 25,
+  1535→    isFree: false,
+  1536→    isLocked: false,
+  1537→    content: {
+  1538→      body: {
+  1539→        ar: `## ما هو الـ Box Model؟
+  1540→
+  1541→كل عنصر في HTML يعتبر "صندوقاً" مستطيلاً يتكون من 4 طبقات:
+  1542→
+  1543→\`\`\`
+  1544→┌─────────────────────────────────┐
+  1545→│           margin                │
+  1546→│  ┌───────────────────────────┐  │
+  1547→│  │         border            │  │
+  1548→│  │  ┌─────────────────────┐  │  │
+  1549→│  │  │      padding        │  │  │
+  1550→│  │  │  ┌───────────────┐  │  │  │
+  1551→│  │  │  │   content     │  │  │  │
+  1552→│  │  │  │               │  │  │  │
+  1553→│  │  │  └───────────────┘  │  │  │
+  1554→│  │  └─────────────────────┘  │  │
+  1555→│  └───────────────────────────┘  │
+  1556→└─────────────────────────────────┘
+  1557→\`\`\`
+  1558→
+  1559→### الطبقات من الداخل للخارج
+  1560→1. **Content**: المحتوى الفعلي (نص، صورة...)
+  1561→2. **Padding**: مساحة داخلية بين المحتوى والحدود
+  1562→3. **Border**: الحدود حول العنصر
+  1563→4. **Margin**: مساحة خارجية بين العنصر والعناصر المجاورة
+  1564→
+  1565→## تحديد الأبعاد
+  1566→
+  1567→\`\`\`css
+  1568→.box {
+  1569→  width: 300px;
+  1570→  height: 200px;
+  1571→  padding: 20px;
+  1572→  border: 5px solid #333;
+  1573→  margin: 15px;
+  1574→}
+  1575→\`\`\`
+  1576→
+  1577→### بدون \`box-sizing: border-box\`
+  1578→العرض الإجمالي = 300 + 20*2 + 5*2 = 350px
+  1579→الارتفاع الإجمالي = 200 + 20*2 + 5*2 = 250px
+  1580→
+  1581→### مع \`box-sizing: border-box\` (الموصى به)
+  1582→العرض الإجمالي = 300px (يحتوي كل شيء)
+  1583→المحتوى الفعلي = 300 - 20*2 - 5*2 = 250px
+  1584→
+  1585→## Margin
+  1586→
+  1587→\`\`\`css
+  1588→/* قيم مختلفة لكل جهة */
+  1589→margin-top: 10px;
+  1590→margin-right: 20px;
+  1591→margin-bottom: 15px;
+  1592→margin-left: 25px;
+  1593→
+  1594→/* اختصار: top right bottom left */
+  1595→margin: 10px 20px 15px 25px;
+  1596→
+  1597→/* اختصار: top/bottom left/right */
+  1598→margin: 10px 20px;
+  1599→
+  1600→/* اختصار: كل الجهات */
+  1601→margin: 10px;
+  1602→
+  1603→/* توسيط أفقي */
+  1604→margin: 0 auto;
+  1605→
+  1606→/* قيم سالبة (يتداخل مع غيره) */
+  1607→margin-top: -20px;
+  1608→\`\`\`
+  1609→
+  1610→### Margin Collapse
+  1611→عندما يلتقي عنصران عمودياً، الـ margin بينهما لا يجمع، بل يأخذ الأكبر:
+  1612→\`\`\`
+  1613→.element-1 { margin-bottom: 30px; }
+  1614→.element-2 { margin-top: 20px; }
+  1615→/* المسافة بينهما = 30px وليس 50px */
+  1616→\`\`\`
+  1617→
+  1618→## Padding
+  1619→
+  1620→نفس القواعد لكن للمساحة الداخلية:
+  1621→
+  1622→\`\`\`css
+  1623→padding: 20px;              /* كل الجهات */
+  1624→padding: 10px 20px;         /* top/bottom left/right */
+  1625→padding: 10px 20px 30px 40px; /* top right bottom left */
+  1626→\`\`\`
+  1627→
+  1628→**ملاحظة**: padding لا يقبل قيماً سالبة.
+  1629→
+  1630→## Border
+  1631→
+  1632→\`\`\`css
+  1633→border: 2px solid #333;     /* اختصار */
+  1634→border-width: 2px;
+  1635→border-style: solid;        /* solid, dashed, dotted, double, none */
+  1636→border-color: #333;
+  1637→border-radius: 8px;         /* زوايا دائرية */
+  1638→border-top: 1px dashed red;
+  1639→\`\`\`
+  1640→
+  1641→### حدود متقدمة
+  1642→\`\`\`css
+  1643→/* زوايا مختلفة */
+  1644→border-radius: 10px 20px 30px 40px;
+  1645→
+  1646→/* دائرة كاملة */
+  1647→border-radius: 50%;
+  1648→
+  1649→/* حد سفلي فقط */
+  1650→border-bottom: 3px solid #0ea5e9;
+  1651→
+  1652→/* بدون حد */
+  1653→border: none;
+  1654→\`\`\`
+  1655→
+  1656→## Display Types
+  1657→
+  1658→\`\`\`css
+  1659→display: block;        /* يأخذ عرض كامل، سطر جديد */
+  1660→display: inline;       /* بحجم المحتوى، لا يقبل width/height */
+  1661→display: inline-block; /* بحجم المحتوى، يقبل width/height */
+  1662→display: none;         /* مخفي تماماً */
+  1663→display: flex;         /* تخطيط مرن */
+  1664→display: grid;         /* تخطيط شبكي */
+  1665→\`\`\`
+  1666→
+  1667→| العنصر | Display الافتراضي |
+  1668→|--------|------------------|
+  1669→| \`<div>\`, \`<p>\`, \`<h1>\` | block |
+  1670→| \`<span>\`, \`<a>\`, \`<strong>\` | inline |
+  1671→| \`<img>\`, \`<input>\` | inline-block |
+  1672→
+  1673→## Width و Height
+  1674→
+  1675→\`\`\`css
+  1676→.box {
+  1677→  width: 300px;          /* عرض ثابت */
+  1678→  width: 50%;            /* نسبة من الأب */
+  1679→  width: auto;           /* افتراضي */
+  1680→  max-width: 600px;      /* أقصى عرض */
+  1681→  min-width: 200px;      /* أدنى عرض */
+  1682→  
+  1683→  height: 100vh;         /* ارتفاع الشاشة كاملة */
+  1684→  height: auto;          /* حسب المحتوى */
+  1685→}
+  1686→\`\`\`
+  1687→
+  1688→## تجربة عملية
+  1689→
+  1690→في المحرر، جرّب:
+  1691→1. غيّر قيم padding وشاهد كيف يتغير حجم العنصر
+  1692→2. أضف border بأنماط مختلفة (dashed, dotted, double)
+  1693→3. جرّب margin سالبة و شاهد التداخل`,
+  1694→      },
+  1695→      codeSamples: [
+  1696→        {
+  1697→          id: "css-box-model-1",
+  1698→          language: "html",
+  1699→          filename: "index.html",
+  1700→          code: `<!DOCTYPE html>
+  1701→<html lang="ar" dir="rtl">
+  1702→<head>
+  1703→  <meta charset="UTF-8">
+  1704→  <title>Box Model</title>
+  1705→  <style>
+  1706→    * { box-sizing: border-box; }
+  1707→    body { 
+  1708→      font-family: sans-serif; padding: 2rem; 
+  1709→      background: #f1f5f9;
+  1710→    }
+  1711→    
+  1712→    .box {
+  1713→      width: 300px;
+  1714→      height: 150px;
+  1715→      padding: 20px;
+  1716→      border: 5px solid #0ea5e9;
+  1717→      margin: 20px auto;
+  1718→      background: white;
+  1719→      border-radius: 8px;
+  1720→      
+  1721→      /* إظهار الطبقات */
+  1722→      box-shadow: 
+  1723→        0 0 0 10px rgba(14, 165, 233, 0.2),  /* padding visualized */
+  1724→        0 0 0 15px rgba(14, 165, 233, 0.4);  /* margin visualized */
+  1725→    }
+  1726→    
+  1727→    .nested {
+  1728→      background: #fef3c7;
+  1729→      padding: 15px;
+  1730→      border: 2px dashed #f59e0b;
+  1731→      margin-top: 10px;
+  1732→    }
+  1733→  </style>
+  1734→</head>
+  1735→<body>
+  1736→  <div class="box">
+  1737→    <strong>Content area</strong>
+  1738→    <p>هذا المحتوى داخل الصندوق.</p>
+  1739→  </div>
+  1740→  
+  1741→  <div class="nested">
+  1742→    صندوق متداخل
+  1743→  </div>
+  1744→</body>
+  1745→</html>`,
+  1746→          runnable: true,
+  1747→        },
+  1748→      ],
+  1749→      callouts: [
+  1750→        {
+  1751→          type: "tip",
+  1752→          title: { ar: "اختصار مفيد", en: "Helpful Shorthand" },
+  1753→          body: {
+  1754→            ar: "تذكر ترتيب قيم الاختصار (TRouBLe): Top, Right, Bottom, Left. مثل عقارب الساعة بدءاً من الأعلى.",
+  1755→            en: "Remember shorthand order (TRouBLe): Top, Right, Bottom, Left. Like clockwise starting from top.",
+  1756→          },
+  1757→        },
+  1758→      ],
+  1759→      keyTakeaways: [
+  1760→        {
+  1761→          ar: "كل عنصر HTML هو صندوق من 4 طبقات: content, padding, border, margin.",
+  1762→          en: "Every HTML element is a box with 4 layers: content, padding, border, margin.",
+  1763→        },
+  1764→        {
+  1765→          ar: "box-sizing: border-box يجعل width تشمل padding و border — استخدمه دائماً.",
+  1766→          en: "box-sizing: border-box makes width include padding and border — always use it.",
+  1767→        },
+  1768→        {
+  1769→          ar: "margin يمكن أن يكون سالباً (تداخل)، padding لا يقبل سالب.",
+  1770→          en: "margin can be negative (overlap), padding cannot be negative.",
+  1771→        },
+  1772→        {
+  1773→          ar: "margin collapse يحدث عمودياً بين العناصر المتجاورة.",
+  1774→          en: "margin collapse happens vertically between adjacent elements.",
+  1775→        },
+  1776→      ],
+  1777→    },
+  1778→  },
+  1779→  {
+  1780→    id: "lesson-css-flexbox",
+  1781→    moduleId: "module-css-basics",
+  1782→    courseId: "course-html-css",
+  1783→    slug: "css-flexbox",
+  1784→    title: { ar: "تخطيط Flexbox", en: "Flexbox Layout" },
+  1785→    summary: {
+  1786→      ar: "أتقن Flexbox لترتيب العناصر في صف أو عمود بسهولة ومرونة.",
+  1787→      en: "Master Flexbox to arrange elements in rows or columns easily and flexibly.",
+  1788→    },
+  1789→    type: "reading",
+  1790→    order: 3,
+  1791→    estimatedMinutes: 35,
+  1792→    isFree: false,
+  1793→    isLocked: false,
+  1794→    content: {
+  1795→      body: {
+  1796→        ar: `## ما هو Flexbox؟
+  1797→
+  1798→Flexbox (Flexible Box Layout) هو نظام تخطيط أحادي الاتجاه (صف أو عمود) مصمم لترتيب العناصر وتوزيع المساحات بينها بكفاءة، حتى عندما يكون حجمها غير معروف مسبقاً.
+  1799→
+  1800→## الأساسيات
+  1801→
+  1802→\`\`\`css
+  1803→.container {
+  1804→  display: flex;
+  1805→  /* الآن أبناء .container يصبحون flex items */
+  1806→}
+  1807→\`\`\`
+  1808→
+  1809→بشكل افتراضي:
+  1810→- العناصر تصطف أفقياً (row)
+  1811→- تأخذ ارتفاع الحاوية
+  1812→- تبدأ من اليمين (RTL) أو اليسار (LTR)
+  1813→
+  1814→## خصائص الحاوية (Container)
+  1815→
+  1816→### flex-direction
+  1817→\`\`\`css
+  1818→flex-direction: row;             /* أفقي (افتراضي) */
+  1819→flex-direction: row-reverse;     /* أفقي معكوس */
+  1820→flex-direction: column;          /* عمودي */
+  1821→flex-direction: column-reverse;  /* عمودي معكوس */
+  1822→\`\`\`
+  1823→
+  1824→### justify-content (توزيع على المحور الرئيسي)
+  1825→\`\`\`css
+  1826→justify-content: flex-start;     /* البداية */
+  1827→justify-content: flex-end;       /* النهاية */
+  1828→justify-content: center;         /* المنتصف */
+  1829→justify-content: space-between;  /* مسافات متساوية، أول وآخر بالأطراف */
+  1830→justify-content: space-around;   /* مسافات متساوية حول كل عنصر */
+  1831→justify-content: space-evenly;   /* مسافات متساوية تماماً */
+  1832→\`\`\`
+  1833→
+  1834→### align-items (محاذاة على المحور العمودي)
+  1835→\`\`\`css
+  1836→align-items: stretch;       /* يتمدد (افتراضي) */
+  1837→align-items: flex-start;    /* الأعلى */
+  1838→align-items: flex-end;      /* الأسفل */
+  1839→align-items: center;        /* المنتصف */
+  1840→align-items: baseline;      /* على خط الأساس */
+  1841→\`\`\`
+  1842→
+  1843→### flex-wrap
+  1844→\`\`\`css
+  1845→flex-wrap: nowrap;     /* على سطر واحد، قد تتداخل */
+  1846→flex-wrap: wrap;       /* تنتقل لسطر جديد عند الحاجة */
+  1847→flex-wrap: wrap-reverse;
+  1848→\`\`\`
+  1849→
+  1850→### align-content (توزيع الأسطر المتعددة)
+  1851→\`\`\`css
+  1852→align-content: flex-start;
+  1853→align-content: flex-end;
+  1854→align-content: center;
+  1855→align-content: space-between;
+  1856→align-content: stretch;  /* افتراضي */
+  1857→\`\`\`
+  1858→
+  1859→### gap (مسافات بين العناصر)
+  1860→\`\`\`css
+  1861→gap: 1rem;              /* كل الاتجاهات */
+  1862→gap: 1rem 2rem;         /* صف عمود */
+  1863→row-gap: 1rem;
+  1864→column-gap: 2rem;
+  1865→\`\`\`
+  1866→
+  1867→## خصائص العنصر (Item)
+  1868→
+  1869→### flex (اختصار)
+  1870→\`\`\`css
+  1871→.item {
+  1872→  flex: 1;          /* flex-grow:1, flex-shrink:1, flex-basis:0% */
+  1873→  flex: 1 0 200px;  /* grow shrink basis */
+  1874→  flex: auto;       /* 1 1 auto */
+  1875→  flex: none;       /* 0 0 auto */
+  1876→}
+  1877→\`\`\`
+  1878→
+  1879→### flex-grow (النمو)
+  1880→\`\`\`css
+  1881→.item-a { flex-grow: 1; }  /* يأخذ حصة من المساحة الزائدة */
+  1882→.item-b { flex-grow: 2; }  /* يأخذ ضعف ما يأخذه a */
+  1883→.item-c { flex-grow: 0; }  /* لا ينمو */
+  1884→\`\`\`
+  1885→
+  1886→### flex-shrink (التقلص)
+  1887→\`\`\`css
+  1888→.item { flex-shrink: 0; }  /* لا يتقلص، قد يفيض */
+  1889→.item { flex-shrink: 1; }  /* يتقلص عند الحاجة */
+  1890→\`\`\`
+  1891→
+  1892→### flex-basis (الحجم الأولي)
+  1893→\`\`\`css
+  1894→.item { flex-basis: 200px; }  /* يبدأ بـ 200px */
+  1895→.item { flex-basis: auto; }   /* حسب المحتوى */
+  1896→\`\`\`
+  1897→
+  1898→### order (ترتيب)
+  1899→\`\`\`css
+  1900→.item-first { order: -1; }  /* قبل الآخرين */
+  1901→.item-last { order: 99; }   /* بعد الآخرين */
+  1902→\`\`\`
+  1903→
+  1904→### align-self (محاذاة فردية)
+  1905→\`\`\`css
+  1906→.item {
+  1907→  align-self: center;     /* يتجاوز align-items */
+  1908→  align-self: flex-start;
+  1909→}
+  1910→\`\`\`
+  1911→
+  1912→## أمثلة عملية
+  1913→
+  1914→### 1. توسيط كامل (الأكثر استخداماً)
+  1915→\`\`\`css
+  1916→.center {
+  1917→  display: flex;
+  1918→  justify-content: center;
+  1919→  align-items: center;
+  1920→  min-height: 100vh;
+  1921→}
+  1922→\`\`\`
+  1923→
+  1924→### 2. شريط تنقل
+  1925→\`\`\`css
+  1926→.navbar {
+  1927→  display: flex;
+  1928→  justify-content: space-between;
+  1929→  align-items: center;
+  1930→  padding: 1rem 2rem;
+  1931→}
+  1932→
+  1933→.nav-links {
+  1934→  display: flex;
+  1935→  gap: 1.5rem;
+  1936→}
+  1937→\`\`\`
+  1938→
+  1939→### 3. بطاقات متساوية
+  1940→\`\`\`css
+  1941→.cards {
+  1942→  display: flex;
+  1943→  gap: 1rem;
+  1944→}
+  1945→
+  1946→.card {
+  1947→  flex: 1;  /* كل بطاقة تأخذ حصة متساوية */
+  1948→}
+  1949→\`\`\`
+  1950→
+  1951→### 4. Sidebar + محتوى
+  1952→\`\`\`css
+  1953→.layout {
+  1954→  display: flex;
+  1955→  gap: 2rem;
+  1956→}
+  1957→
+  1958→.sidebar {
+  1959→  flex: 0 0 250px;  /* عرض ثابت */
+  1960→}
+  1961→
+  1962→.main {
+  1963→  flex: 1;  /* يأخذ الباقي */
+  1964→}
+  1965→\`\`\`
+  1966→
+  1967→### 5. صف متجدد
+  1968→\`\`\`css
+  1969→.grid-auto {
+  1970→  display: flex;
+  1971→  flex-wrap: wrap;
+  1972→  gap: 1rem;
+  1973→}
+  1974→
+  1975→.grid-auto > * {
+  1976→  flex: 1 1 250px;  /* ينمو ويتقلص، أساس 250px */
+  1977→}
+  1978→\`\`\``,
+  1979→      },
+  1980→      codeSamples: [flexboxSample],
+  1981→      callouts: [
+  1982→        {
+  1983→          type: "tip",
+  1984→          title: { ar: "قاعدة ذهبية", en: "Golden Rule" },
+  1985→          body: {
+  1986→            ar: "Flexbox للترتيب أحادي الاتجاه (صف أو عمود). CSS Grid للترتيب ثنائي الاتجاه (صفوف وأعمدة معاً). تعلم الاثنين واستخدم الأنسب لكل حالة.",
+  1987→            en: "Flexbox for one-direction layouts (row or column). CSS Grid for two-direction (rows AND columns). Learn both and use the right one for each case.",
+  1988→          },
+  1989→        },
+  1990→      ],
+  1991→      keyTakeaways: [
+  1992→        {
+  1993→          ar: "Flexbox نظام تخطيط مرن لصف أو عمود، مثالي للقوائم وأشرطة التنقل.",
+  1994→          en: "Flexbox is a flexible one-direction layout system, ideal for lists and navbars.",
+  1995→        },
+  1996→        {
+  1997→          ar: "justify-content للترتيب على المحور الرئيسي، align-items للعمودي.",
+  1998→          en: "justify-content for main axis alignment, align-items for cross axis.",
+  1999→        },
+  2000→        {
+
+[showing lines 1-2000 of 3633; use offset=2001 with limit to continue reading]
